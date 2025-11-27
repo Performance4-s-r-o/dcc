@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si"
+    xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.2.1/dcc.xsd" schemaVersion="3.2.1">
+    <dcc:administrativeData>
+        <dcc:dccSoftware>
+            <dcc:software>
+                <dcc:name>
+                    <dcc:content>Excel</dcc:content>
+                </dcc:name>
+                <dcc:release>v8.2</dcc:release>
+            </dcc:software>
+            <dcc:software>
+                <dcc:name>
+                    <dcc:content>Sablona vahy pm</dcc:content>
+                </dcc:name>
+                <dcc:release>v1.0</dcc:release>
+            </dcc:software>
+        </dcc:dccSoftware>
+        <dcc:calibrationLaboratory>
+            <dcc:calibrationLaboratoryCode>K123</dcc:calibrationLaboratoryCode>
+            <dcc:contact>
+                <dcc:name>
+                    <dcc:content>Yokohama TWS a.s.</dcc:content>
+                </dcc:name>
+                <dcc:eMail>email@email.com</dcc:eMail>
+                <dcc:location>
+                    <dcc:city>Zlín</dcc:city>
+                    <dcc:countryCode>CZ</dcc:countryCode>
+                </dcc:location>
+            </dcc:contact>
+        </dcc:calibrationLaboratory>
+        <dcc:coreData>
+            <dcc:countryCodeISO3166_1>CZ</dcc:countryCodeISO3166_1>
+            <dcc:usedLangCodeISO639_1>cs</dcc:usedLangCodeISO639_1>
+            <dcc:mandatoryLangCodeISO639_1>cs</dcc:mandatoryLangCodeISO639_1>
+            <dcc:uniqueIdentifier>PM4222.Z-25</dcc:uniqueIdentifier>
+            <dcc:identifications>
+                <dcc:identification>
+                    <dcc:issuer>calibrationLaboratory</dcc:issuer>
+                    <dcc:value>PM4222.Z-25</dcc:value>
+                </dcc:identification>
+            </dcc:identifications>
+            <dcc:beginPerformanceDate>2023-05-17</dcc:beginPerformanceDate>
+            <dcc:endPerformanceDate>2023-05-17</dcc:endPerformanceDate>
+            <dcc:performanceLocation>customer</dcc:performanceLocation>
+        </dcc:coreData>
+        <dcc:customer>
+            <dcc:name>
+                <dcc:content>on site Yokohama TWS</dcc:content>
+            </dcc:name>
+            <dcc:eMail>nasa@email.com</dcc:eMail>
+            <dcc:phone>123456789</dcc:phone>
+            <dcc:location>
+                <dcc:countryCode>CZ</dcc:countryCode>
+                <dcc:city>Zlín</dcc:city>
+            </dcc:location>
+        </dcc:customer>
+        <dcc:items>
+            <dcc:item>
+                <dcc:name>
+                    <dcc:content>KC1000</dcc:content>
+                </dcc:name>
+                <dcc:equipmentClass>
+                    <dcc:reference>tp 4 %</dcc:reference>
+                    <dcc:classID>4</dcc:classID>
+                </dcc:equipmentClass>
+                <dcc:manufacturer>
+                    <dcc:name>
+                        <dcc:content>Prema</dcc:content>
+                    </dcc:name>
+                </dcc:manufacturer>
+                <dcc:model>KC1000</dcc:model>
+                <dcc:identifications>
+                    <dcc:identification refType="serialNumber">
+                        <dcc:issuer>manufacturer</dcc:issuer>
+                        <dcc:value>SN12345</dcc:value>
+                        <dcc:name>
+                            <dcc:content>SN</dcc:content>
+                        </dcc:name>
+                    </dcc:identification>
+                </dcc:identifications>
+                <dcc:itemQuantities>
+                    <dcc:itemQuantity refType="toleranceLimitUpper">
+                        <dcc:name>
+                            <dcc:content>MPE relative upper</dcc:content>
+                        </dcc:name>
+                        <si:real>
+                            <si:value>4</si:value>
+                            <si:unit>%</si:unit>
+                        </si:real>
+                    </dcc:itemQuantity>
+                    <dcc:itemQuantity refType="toleranceLimitLower">
+                        <dcc:name>
+                            <dcc:content>MPE relative lower</dcc:content>
+                        </dcc:name>
+                        <si:real>
+                            <si:value>4</si:value>
+                            <si:unit>%</si:unit>
+                        </si:real>
+                    </dcc:itemQuantity>
+                </dcc:itemQuantities>
+            </dcc:item>
+        </dcc:items>
+        <dcc:respPersons>
+            <dcc:respPerson>
+                <dcc:person>
+                    <dcc:name>
+                        <dcc:content>Petr Jurák</dcc:content>
+                    </dcc:name>
+                </dcc:person>
+            </dcc:respPerson>
+        </dcc:respPersons>
+        <dcc:statements>
+            <dcc:statement>
+                <dcc:declaration>
+                    <dcc:content>Výsledky kalibrace byly získány za podmínek a s použitím postupů uvedených v tomto kalibračním listě a vztahují se pouze k době a místu provedení kalibrace.</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+        </dcc:statements>
+    </dcc:administrativeData>
+    <dcc:measurementResults>
+        <dcc:measurementResult>
+            <dcc:name>
+                <dcc:content>Measurement results</dcc:content>
+            </dcc:name>
+            <dcc:influenceConditions>
+                <dcc:influenceCondition refType="basic_temperature">
+                    <dcc:name>
+                        <dcc:content>Ambient temperature at start and end of measurement</dcc:content>
+                    </dcc:name>
+                    <dcc:data>            <!-- Start temperature (with timestamp) -->
+                        <dcc:list>
+                            <dcc:dateTime>2023-05-17T00:00:00Z</dcc:dateTime>
+                            <dcc:quantity refType="basic_temperature">
+                                <dcc:name>
+                                    <dcc:content>Ambient temperature at start</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>19.2</si:value>
+                                    <si:unit>\degreecelsius</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                        </dcc:list>            <!--
+                        End temperature (with timestamp) -->
+                        <dcc:list>
+                            <dcc:dateTime>2023-05-17T00:00:00Z</dcc:dateTime>
+                            <dcc:quantity refType="basic_temperature">
+                                <dcc:name>
+                                    <dcc:content>Ambient temperature at end</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>19.2</si:value>
+                                    <si:unit>\degreecelsius</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                        </dcc:list>
+                    </dcc:data>
+                </dcc:influenceCondition>
+            </dcc:influenceConditions>
+            <dcc:results>
+                <dcc:result>
+                    <dcc:name>
+                        <dcc:content>Measurement result</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:list>
+                            <dcc:quantity refType="basic_referenceValue">
+                                <dcc:name>
+                                    <dcc:content>Reference value</dcc:content>
+                                </dcc:name>
+                                <si:realListXMLList>
+                                    <si:valueXMLList>0 10 20 30 40 50 50 40 30 20 10 0</si:valueXMLList>
+                                    <si:unitXMLList>\bar</si:unitXMLList>
+                                </si:realListXMLList>
+                            </dcc:quantity>
+                            <dcc:quantity refType="basic_measuredValue">
+                                <dcc:name>
+                                    <dcc:content>Indicated values on the calibrated instrument</dcc:content>
+                                </dcc:name>
+                                <si:realListXMLList>
+                                        <si:valueXMLList>0 10 20 30 40 50 50 40 30 20 10 0</si:valueXMLList>
+                                    <si:unitXMLList>\bar</si:unitXMLList>
+                                    <si:expandedUncXMLList>
+                                        <si:uncertaintyXMLList>0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001
+                                            0.001 0.001 0.001 0.001</si:uncertaintyXMLList>
+                                        <si:coverageFactorXMLList>2 2 2 2 2 2 2 2 2 2 2 2 </si:coverageFactorXMLList>
+                                        <si:coverageProbabilityXMLList>0.95 0.95 0.95 0.95 0.95 0.95  0.95 0.95
+                                            0.95 0.95 0.95 0.95</si:coverageProbabilityXMLList>
+                                    </si:expandedUncXMLList>
+                                </si:realListXMLList>
+                            </dcc:quantity>
+                            <dcc:quantity refType="measurementError">
+                                <dcc:name>
+                                    <dcc:content>Absolute measurement error</dcc:content>
+                                </dcc:name>
+                                <si:realListXMLList>
+                                    <si:valueXMLList>0 0 0 0 0 0 0 0 0 0 0 0</si:valueXMLList>
+                                    <si:unitXMLList>\bar</si:unitXMLList>
+                                </si:realListXMLList>
+                            </dcc:quantity>
+                        </dcc:list>
+                    </dcc:data>
+                </dcc:result>
+                <dcc:result>
+                    <dcc:name>
+                        <dcc:content>Repeatability</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity>
+                            <dcc:name>
+                                <dcc:content>Repeatability</dcc:content>
+                            </dcc:name>
+                            <si:realListXMLList>
+                                <si:valueXMLList>0 0 0 0 0 0</si:valueXMLList>
+                                <si:unitXMLList>\bar</si:unitXMLList>
+                            </si:realListXMLList>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:result>
+            </dcc:results>
+        </dcc:measurementResult>
+    </dcc:measurementResults>
+</dcc:digitalCalibrationCertificate>
