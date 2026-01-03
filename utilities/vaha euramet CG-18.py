@@ -28,20 +28,21 @@ def mpl_evaluation(nominal_value: float, scale_resolution: float, k_up: float, k
     else:
         return False
 
-def mpe_evaluation(nominal_value: float, scale_resolution: float, k_up: float, k_down: float, uBE: float) -> float:
+def mpe_evaluation(nominal_value: float, scale_resolution: float, k_up: float, k_down: float, U: float, w: float) -> float:
     """
     MPE evaluation
     :param nominal_value: Nominal value for MPE calculation.
     :param scale_resolution: Scale resolution for MPE calculation.
     :param k_up: Upward measurement value.
     :param k_down: Downward measurement value.
-    :param uBE: Uncertainty of etalon.
+    :param U: Uncertainty of calibration.
+    :param w: guard band
 
     Returns True if MPE is within MPE
     """
     k = (k_up + k_down) / 2
     BI = k - nominal_value
-    if abs(BI) + uBE <= get_mpe(nominal_value, scale_resolution):
+    if abs(BI) + w*U <= get_mpe(nominal_value, scale_resolution):
         return True
     else:
         return False
