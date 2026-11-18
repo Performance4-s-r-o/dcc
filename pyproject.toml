@@ -1,0 +1,12 @@
+[project]
+name = "dcc-templates"
+version = "0.1.0"
+description = "Šablony DCC (Digital Calibration Certificate) a jejich validace"
+requires-python = ">=3.11"
+dependencies = ["lxml>=5.0"]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

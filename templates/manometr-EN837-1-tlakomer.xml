@@ -106,7 +106,7 @@
                         </dcc:name>
                         <si:real>
                             <si:value>{{mpe_relative_upper}}</si:value>
-                            <si:unit>%</si:unit>
+                            <si:unit>\percent</si:unit>
                         </si:real>
                     </dcc:itemQuantity>
                     <dcc:itemQuantity refType="toleranceLimitLower">
@@ -115,7 +115,7 @@
                         </dcc:name>
                         <si:real>
                             <si:value>{{mpe_relative_lower}}</si:value>
-                            <si:unit>%</si:unit>
+                            <si:unit>\percent</si:unit>
                         </si:real>
                     </dcc:itemQuantity>
                     <dcc:itemQuantity refType="basic_rangeLower">

@@ -1,0 +1,10 @@
+{
+  "measurement_si_unit": "\\gram",
+  "eccentricity_test_load": "5000",
+  "eccentricity_center": "5000.1",
+  "eccentricity_front": "5000.2",
+  "eccentricity_back": "5000.1",
+  "eccentricity_left": "5000.0",
+  "eccentricity_right": "5000.1",
+  "eccentricity_max_error": "0.2"
+}
