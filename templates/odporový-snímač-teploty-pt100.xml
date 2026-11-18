@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si"
+    xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.2.1/dcc.xsd" schemaVersion="3.2.1">
+    <dcc:administrativeData>
+        <dcc:dccSoftware>
+            <dcc:software>
+                <dcc:name>
+                    <dcc:content>Excel</dcc:content>
+                </dcc:name>
+                <dcc:release>v8.2</dcc:release>
+            </dcc:software>
+            <dcc:software>
+                <dcc:name>
+                    <dcc:content>Sablona odporovy snimac teploty Pt100</dcc:content>
+                </dcc:name>
+                <dcc:release>v1.0</dcc:release>
+            </dcc:software>
+        </dcc:dccSoftware>
+        <dcc:calibrationLaboratory>
+            <dcc:calibrationLaboratoryCode>{{calibration_lab_code}}</dcc:calibrationLaboratoryCode>
+            <dcc:contact>
+                <dcc:name>
+                    <dcc:content>{{laboratory_name}}</dcc:content>
+                </dcc:name>
+                <dcc:eMail>{{laboratory_email}}</dcc:eMail>
+                <dcc:location>
+                    <dcc:city>{{laboratory_city}}</dcc:city>
+                    <dcc:countryCode>CZ</dcc:countryCode>
+                </dcc:location>
+            </dcc:contact>
+        </dcc:calibrationLaboratory>
+        <dcc:coreData>
+            <dcc:countryCodeISO3166_1>CZ</dcc:countryCodeISO3166_1>
+            <dcc:usedLangCodeISO639_1>cs</dcc:usedLangCodeISO639_1>
+            <dcc:mandatoryLangCodeISO639_1>cs</dcc:mandatoryLangCodeISO639_1>
+            <dcc:uniqueIdentifier>{{lab_unique_identifier}}</dcc:uniqueIdentifier>
+            <dcc:identifications>
+                <dcc:identification>
+                    <dcc:issuer>calibrationLaboratory</dcc:issuer>
+                    <dcc:value>{{lab_identifier}}</dcc:value>
+                </dcc:identification>
+            </dcc:identifications>
+            <dcc:beginPerformanceDate>{{calibration_start_date}}</dcc:beginPerformanceDate>
+            <dcc:endPerformanceDate>{{calibration_end_date}}</dcc:endPerformanceDate>
+            <dcc:performanceLocation>{{calibration_location}}</dcc:performanceLocation>
+            <dcc:issueDate>{{issue_date}}</dcc:issueDate>
+        </dcc:coreData>
+        <dcc:customer>
+            <dcc:name>
+                <dcc:content>{{customer_name}}</dcc:content>
+            </dcc:name>
+            <dcc:eMail>{{customer_email}}</dcc:eMail>
+            <dcc:location>
+                <dcc:countryCode>{{customer_country_code}}</dcc:countryCode>
+                <dcc:city>{{customer_city}}</dcc:city>
+            </dcc:location>
+        </dcc:customer>
+        <dcc:items>
+            <dcc:item>
+                <dcc:name>
+                    <dcc:content>{{instrument_name}}</dcc:content>
+                </dcc:name>
+                <dcc:description>
+                    <dcc:content>{{instrument_description}}</dcc:content>
+                </dcc:description>
+                <dcc:manufacturer>
+                    <dcc:name>
+                        <dcc:content>{{manufacturer_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:manufacturer>
+                <dcc:model>{{model}}</dcc:model>
+                <dcc:identifications>
+                    <dcc:identification refType="serialNumber">
+                        <dcc:issuer>manufacturer</dcc:issuer>
+                        <dcc:value>{{serial_number}}</dcc:value>
+                        <dcc:name>
+                            <dcc:content>SN</dcc:content>
+                        </dcc:name>
+                    </dcc:identification>
+                </dcc:identifications>
+                <dcc:itemQuantities>
+                    <dcc:itemQuantity refType="basic_rangeLower">
+                        <dcc:name>
+                            <dcc:content>Measuring range lower limit</dcc:content>
+                        </dcc:name>
+                        <si:real>
+                            <si:value>{{range_lower_degc}}</si:value>
+                            <si:unit>\degreecelsius</si:unit>
+                        </si:real>
+                    </dcc:itemQuantity>
+                    <dcc:itemQuantity refType="basic_rangeUpper">
+                        <dcc:name>
+                            <dcc:content>Measuring range upper limit</dcc:content>
+                        </dcc:name>
+                        <si:real>
+                            <si:value>{{range_upper_degc}}</si:value>
+                            <si:unit>\degreecelsius</si:unit>
+                        </si:real>
+                    </dcc:itemQuantity>
+                </dcc:itemQuantities>
+            </dcc:item>
+        </dcc:items>
+        <dcc:respPersons>
+            <dcc:respPerson>
+                <dcc:person>
+                    <dcc:name>
+                        <dcc:content>{{responsible_person_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:person>
+                <dcc:role>Calibrated by</dcc:role>
+            </dcc:respPerson>
+            <dcc:respPerson>
+                <dcc:person>
+                    <dcc:name>
+                        <dcc:content>{{approver_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:person>
+                <dcc:role>Approved by</dcc:role>
+            </dcc:respPerson>
+        </dcc:respPersons>
+        <dcc:statements>
+            <dcc:statement>
+                <dcc:declaration>
+                    <dcc:content>{{results_declaration}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content>Place of calibration</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content>{{calibration_location_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content>Traceability</dcc:content>
+                </dcc:name>
+                <dcc:traceable>true</dcc:traceable>
+                <dcc:declaration>
+                    <dcc:content>{{traceability}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content>Calibration conditions</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content>{{calibration_conditions_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content>Calibration mark</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content>{{marking_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content>Measurement uncertainty</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content>{{uncertainty_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+        </dcc:statements>
+    </dcc:administrativeData>
+    <dcc:measurementResults>
+        <dcc:measurementResult>
+            <dcc:name>
+                <dcc:content>Measurement results</dcc:content>
+            </dcc:name>
+            <dcc:usedMethods>
+                <dcc:usedMethod>
+                    <dcc:name>
+                        <dcc:content>{{method_text}}</dcc:content>
+                    </dcc:name>
+                    <dcc:reference>{{method_code}}</dcc:reference>
+                </dcc:usedMethod>
+            </dcc:usedMethods>
+            <dcc:measuringEquipments>
+                <dcc:measuringEquipment>
+                    <dcc:name>
+                        <dcc:content>{{etalon_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:measuringEquipment>
+            </dcc:measuringEquipments>
+            <dcc:influenceConditions>
+                <dcc:influenceCondition refType="basic_temperature">
+                    <dcc:name>
+                        <dcc:content>Ambient temperature in the laboratory</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity refType="math_minimum">
+                            <dcc:name>
+                                <dcc:content>Ambient temperature min</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{ambient_temperature_min_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                        <dcc:quantity refType="math_maximum">
+                            <dcc:name>
+                                <dcc:content>Ambient temperature max</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{ambient_temperature_max_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition refType="gp_current">
+                    <dcc:name>
+                        <dcc:content>Measuring current</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity>
+                            <dcc:name>
+                                <dcc:content>Measuring current (alternating)</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{measuring_current_a}}</si:value>
+                                <si:unit>\ampere</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                        <dcc:quantity>
+                            <dcc:name>
+                                <dcc:content>Measuring current frequency</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{measuring_frequency_hz}}</si:value>
+                                <si:unit>\hertz</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition refType="gp_immersionDepth">
+                    <dcc:name>
+                        <dcc:content>Immersion depth</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity>
+                            <dcc:name>
+                                <dcc:content>Immersion depth</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{immersion_depth_m}}</si:value>
+                                <si:unit>\metre</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+            </dcc:influenceConditions>
+            <dcc:results>
+                <dcc:result>
+                    <dcc:name>
+                        <dcc:content>Measurement result</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:list>
+                            <dcc:quantity refType="basic_referenceValue">
+                                <dcc:name>
+                                    <dcc:content>Reference value t90</dcc:content>
+                                </dcc:name>
+                                <si:realListXMLList>
+                                    <si:valueXMLList>{{reference_values_degc}}</si:valueXMLList>
+                                    <si:unitXMLList>\degreecelsius</si:unitXMLList>
+                                </si:realListXMLList>
+                            </dcc:quantity>
+                            <dcc:quantity refType="basic_measuredValue">
+                                <dcc:name>
+                                    <dcc:content>Resistance of the calibrated sensor Rm</dcc:content>
+                                </dcc:name>
+                                <si:realListXMLList>
+                                    <si:valueXMLList>{{measured_values_ohm}}</si:valueXMLList>
+                                    <si:unitXMLList>\ohm</si:unitXMLList>
+                                </si:realListXMLList>
+                            </dcc:quantity>
+                            <dcc:quantity refType="basic_uncertainty">
+                                <dcc:name>
+                                    <dcc:content>Expanded uncertainty U (expressed in temperature)</dcc:content>
+                                </dcc:name>
+                                <si:realListXMLList>
+                                    <si:valueXMLList>{{measured_uncertainties_degc}}</si:valueXMLList>
+                                    <si:unitXMLList>\degreecelsius</si:unitXMLList>
+                                    <si:expandedUncXMLList>
+                                        <si:uncertaintyXMLList>{{measured_uncertainties_degc}}</si:uncertaintyXMLList>
+                                        <si:coverageFactorXMLList>{{coverage_factor}}</si:coverageFactorXMLList>
+                                        <si:coverageProbabilityXMLList>{{coverage_probability}}</si:coverageProbabilityXMLList>
+                                    </si:expandedUncXMLList>
+                                </si:realListXMLList>
+                            </dcc:quantity>
+                        </dcc:list>
+                    </dcc:data>
+                </dcc:result>
+                <dcc:result refType="temperature_callendarVanDusenCoefficientsSimple">
+                    <dcc:name>
+                        <dcc:content>Interpolation equation coefficients: Rt = R0 (1 + A t90 + B t90^2), t90 in degrees Celsius</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:list>
+                            <dcc:quantity id="R_0">
+                                <dcc:name>
+                                    <dcc:content>R0 (resistance at 0 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:label>R0</si:label>
+                                    <si:value>{{coefficient_r0_ohm}}</si:value>
+                                    <si:unit>\ohm</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity id="A">
+                                <dcc:name>
+                                    <dcc:content>Coefficient A</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:label>A</si:label>
+                                    <si:value>{{coefficient_a_per_degc}}</si:value>
+                                    <si:unit>\degreecelsius\tothe{-1}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity id="B">
+                                <dcc:name>
+                                    <dcc:content>Coefficient B</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:label>B</si:label>
+                                    <si:value>{{coefficient_b_per_degc2}}</si:value>
+                                    <si:unit>\degreecelsius\tothe{-2}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                        </dcc:list>
+                    </dcc:data>
+                </dcc:result>
+            </dcc:results>
+        </dcc:measurementResult>
+    </dcc:measurementResults>
+</dcc:digitalCalibrationCertificate>
