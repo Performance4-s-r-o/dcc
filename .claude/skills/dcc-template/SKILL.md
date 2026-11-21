@@ -73,3 +73,39 @@ ponor 250 mm (`gp_immersionDepth`), R0/A/B a rovnice `Rt = R0(1 + A·t + B·t²)
 Nepokryto strukturou DCC (jde do `statements`/`description` jako text nebo se řeší mimo): „Měřidlo bylo označeno kalibrační značkou“,
 logo/ILAC/razítko, „List 1 ze 2“ (nahrazuje DCC jako celek), zákaz rozmnožování (jen text).
 Závěr: pro tento typ KL DCC dostačuje; chybí jen typově specifické `gp_*` refTypy, které je potřeba převzít z GP, ne vymýšlet.
+
+## Excel: list Logic (načtení šablony z GitHubu a vyplnění)
+Každý sešit s KL dostane list **Logic**: `I3` = odkaz na šablonu v repu (`blob/main/templates/…`, diakritika v URL
+musí být procentově zakódovaná), `I1` ji načte přes `WEBSERVICE`, tabulka `TableHandledVars` (sloupce VarNames, Values,
+XmlValue) mapuje každý `{{placeholder}}` na buňky sešitu, `I2` je skládá (`REDUCE`/`SUBSTITUTE`), `I16` je výsledné XML,
+`I15` stav („Připraveno“). Makra (`utilities/vba/dcc_export_logic.bas`) čtou právě tuto strukturu.
+- Hotový builder listu: `utilities/excel_logic.py` (`build_logic`); mapování je slovník `placeholder → vzorec`,
+  skript odmítne běh, pokud se jeho klíče liší od placeholderů šablony.
+- Nová šablona se musí nejdřív **pushnout na GitHub main**, jinak `I1` hlásí `#VALUE!`.
+- Čísla do XML převádět `SUBSTITUTE(x&"",",",".")`, data `YEAR()&"-"&TEXT(MONTH(),"00")&…` (ne `TEXT(x,"yyyy-mm-dd")` –
+  v české verzi je `rrrr`), seznamy `TEXTJOIN(" ",TRUE,rozsah)`, čísla z textu `NUMBERVALUE(text,".")`.
+- Přes COM: tabulku plnit s vypnutým `AutoCorrect.AutoFillFormulasInLists` (jinak se vzorec z posledního řádku roztáhne
+  do celého sloupce); do cizího sešitu přidávat list s **manuálním výpočtem** a `CalculateBeforeSave=False`, jinak se
+  přepočtou UDF/`CELL("filename")` a změní se uložené hodnoty původních listů.
+
+### Povinná kontrola po každé úpravě Excelu (skripty se vždy ověřují)
+Skript, který sešit generuje nebo mění, je kód jako každý jiný: **nikdy ho nepovažuj za hotový, dokud neprošly všechny body**.
+Výsledek ověřuj z **uloženého souboru**, ne z živého Excelu (ten může ukazovat jiný stav než disk).
+1. **Před úpravou**: zazálohuj aktuální soubor (uživatel ho mohl mezitím znovu uložit/pushnout – vždy vycházej z aktuální verze,
+   ne ze své starší zálohy) a zkontroluj, že sešit není otevřený v Excelu; chráněné zobrazení: `ProtectedViewWindows(1).Edit()`.
+2. **Mapování**: `build_logic` selže, pokud se klíče mapování liší od placeholderů šablony – nepřeskakovat.
+3. **Logic funguje**: všechny řádky ✔, žádná hodnota `#…`/prázdná, `I15` = „Připraveno“; před pushem šablony ji do `I1`
+   dočasně vlož lokálně, po testu **vrať vzorec `WEBSERVICE`**.
+4. **XML validní**: XML z `I16` projde `validate_text` (XSD + pravidla praxe) – nestačí, že Excel hlásí „Připraveno“.
+5. **Makra**: modul v sešitu musí být shodný s `.bas` z repa; makro otestuj bez dialogů přes dočasnou funkci
+   (vložit celý kód + wrapper, spustit, pak modul **celý přepsat zpět** – `AddFromString` do neprázdného modulu vkládá kód
+   na začátek, mazání podle čísel řádků pak smaže jiný kód). Nepoužívat `VBComponents.Remove` na modul s kódem.
+   `CAL_SHEET_NAME` nastavit, pokud list s KL není „Kalibrační list“.
+6. **Cizí sešit**: přidávat list s manuálním výpočtem, po uložení vrátit `calcPr` (bez `calcCompleted`/`calcOnSave`/`calcMode`).
+7. **Vzhled**: export listu KL do PDF a prohlédnout stránky (počet stran, zlomy, oříznutí).
+8. **Nezávislá kontrola uloženého souboru**:
+   `uv run --with openpyxl python utilities/verify_excel_dcc.py SESIT.xlsm templates/<šablona>.xml --macros [--original ZALOHA.xlsm]`
+   (tabulka proměnných, složení + validace XML z uložených hodnot, makra, `calcPr`, a že se na ostatních listech nezměnila
+   žádná hodnota). Návratový kód musí být 0.
+9. **Úklid**: zavřít jen sešity/instance, které jsem otevřel já (nikdy „zavřít všechny“), bez zbytků `~$…` a dočasných souborů v repu.
+10. **Nahlásit**: co je ověřeno, co ne (např. makro s dialogy, nepushnutá šablona) a co zůstává ručně doplnit („DOPLNIT“).
