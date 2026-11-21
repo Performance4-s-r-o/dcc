@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si"
+    xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.2.1/dcc.xsd" schemaVersion="3.2.1">
+    <dcc:administrativeData>
+        <dcc:dccSoftware>
+            <dcc:software>
+                <dcc:name>
+                    <dcc:content>Excel</dcc:content>
+                </dcc:name>
+                <dcc:release>v8.2</dcc:release>
+            </dcc:software>
+            <dcc:software>
+                <dcc:name>
+                    <dcc:content>Sablona termoelektricky snimac teploty typ S</dcc:content>
+                </dcc:name>
+                <dcc:release>v1.0</dcc:release>
+            </dcc:software>
+        </dcc:dccSoftware>
+        <dcc:calibrationLaboratory>
+            <dcc:calibrationLaboratoryCode>{{calibration_lab_code}}</dcc:calibrationLaboratoryCode>
+            <dcc:contact>
+                <dcc:name>
+                    <dcc:content>{{laboratory_name}}</dcc:content>
+                </dcc:name>
+                <dcc:eMail>{{laboratory_email}}</dcc:eMail>
+                <dcc:location>
+                    <dcc:city>{{laboratory_city}}</dcc:city>
+                    <dcc:countryCode>CZ</dcc:countryCode>
+                </dcc:location>
+            </dcc:contact>
+        </dcc:calibrationLaboratory>
+        <dcc:coreData>
+            <dcc:countryCodeISO3166_1>CZ</dcc:countryCodeISO3166_1>
+            <dcc:usedLangCodeISO639_1>cs</dcc:usedLangCodeISO639_1>
+            <dcc:mandatoryLangCodeISO639_1>cs</dcc:mandatoryLangCodeISO639_1>
+            <dcc:uniqueIdentifier>{{lab_unique_identifier}}</dcc:uniqueIdentifier>
+            <dcc:identifications>
+                <dcc:identification>
+                    <dcc:issuer>calibrationLaboratory</dcc:issuer>
+                    <dcc:value>{{lab_identifier}}</dcc:value>
+                </dcc:identification>
+            </dcc:identifications>
+            <dcc:beginPerformanceDate>{{calibration_start_date}}</dcc:beginPerformanceDate>
+            <dcc:endPerformanceDate>{{calibration_end_date}}</dcc:endPerformanceDate>
+            <dcc:performanceLocation>{{calibration_location}}</dcc:performanceLocation>
+            <dcc:issueDate>{{issue_date}}</dcc:issueDate>
+        </dcc:coreData>
+        <dcc:customer>
+            <dcc:name>
+                <dcc:content>{{customer_name}}</dcc:content>
+            </dcc:name>
+            <dcc:location>
+                <dcc:countryCode>{{customer_country_code}}</dcc:countryCode>
+                <dcc:city>{{customer_city}}</dcc:city>
+            </dcc:location>
+        </dcc:customer>
+        <dcc:items>
+            <dcc:item>
+                <dcc:name>
+                    <dcc:content>{{instrument_name}}</dcc:content>
+                </dcc:name>
+                <dcc:description>
+                    <dcc:content>{{instrument_description}}</dcc:content>
+                </dcc:description>
+                <dcc:manufacturer>
+                    <dcc:name>
+                        <dcc:content>{{manufacturer_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:manufacturer>
+                <dcc:model>{{model}}</dcc:model>
+                <dcc:identifications>
+                    <dcc:identification refType="serialNumber">
+                        <dcc:issuer>manufacturer</dcc:issuer>
+                        <dcc:value>{{serial_number}}</dcc:value>
+                        <dcc:name>
+                            <dcc:content>SN</dcc:content>
+                        </dcc:name>
+                    </dcc:identification>
+                </dcc:identifications>
+            </dcc:item>
+        </dcc:items>
+        <dcc:respPersons>
+            <dcc:respPerson>
+                <dcc:person>
+                    <dcc:name>
+                        <dcc:content>{{responsible_person_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:person>
+                <dcc:role>Calibrated by</dcc:role>
+            </dcc:respPerson>
+            <dcc:respPerson>
+                <dcc:person>
+                    <dcc:name>
+                        <dcc:content>{{approver_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:person>
+                <dcc:role>Approved by</dcc:role>
+            </dcc:respPerson>
+        </dcc:respPersons>
+        <dcc:statements>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content>Mutual recognition arrangement (CIPM MRA)</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content>{{mra_statement_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:declaration>
+                    <dcc:content>{{results_declaration}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content>Place of calibration</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content>{{calibration_location_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content>Traceability</dcc:content>
+                </dcc:name>
+                <dcc:traceable>true</dcc:traceable>
+                <dcc:declaration>
+                    <dcc:content>{{traceability}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content>Measurement uncertainty</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content>{{uncertainty_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+        </dcc:statements>
+    </dcc:administrativeData>
+    <dcc:measurementResults>
+        <dcc:measurementResult>
+            <dcc:name>
+                <dcc:content>Measurement results</dcc:content>
+            </dcc:name>
+            <dcc:usedMethods>
+                <dcc:usedMethod>
+                    <dcc:name>
+                        <dcc:content>{{method_text}}</dcc:content>
+                    </dcc:name>
+                    <dcc:reference>{{method_code}}</dcc:reference>
+                </dcc:usedMethod>
+                <dcc:usedMethod>
+                    <dcc:name>
+                        <dcc:content>Reference function and deviation of the thermocouple type S</dcc:content>
+                    </dcc:name>
+                    <dcc:norm>EN 60584-1</dcc:norm>
+                </dcc:usedMethod>
+                <dcc:usedMethod>
+                    <dcc:name>
+                        <dcc:content>Evaluation of measurement uncertainty</dcc:content>
+                    </dcc:name>
+                    <dcc:norm>JCGM 100:2008</dcc:norm>
+                </dcc:usedMethod>
+            </dcc:usedMethods>
+            <dcc:measuringEquipments>
+                <dcc:measuringEquipment>
+                    <dcc:name>
+                        <dcc:content>{{etalon_name}}</dcc:content>
+                    </dcc:name>
+                    <dcc:identifications>
+                        <dcc:identification refType="serialNumber">
+                            <dcc:issuer>manufacturer</dcc:issuer>
+                            <dcc:value>{{etalon_serial_number}}</dcc:value>
+                            <dcc:name>
+                                <dcc:content>SN</dcc:content>
+                            </dcc:name>
+                        </dcc:identification>
+                        <dcc:identification refType="calibrationCertificate">
+                            <dcc:issuer>other</dcc:issuer>
+                            <dcc:value>{{etalon_certificate_number}}</dcc:value>
+                            <dcc:name>
+                                <dcc:content>Calibration certificate (calibrated by {{etalon_calibrated_by}})</dcc:content>
+                            </dcc:name>
+                        </dcc:identification>
+                    </dcc:identifications>
+                </dcc:measuringEquipment>
+            </dcc:measuringEquipments>
+            <dcc:influenceConditions>
+                <dcc:influenceCondition refType="basic_temperature">
+                    <dcc:name>
+                        <dcc:content>Ambient temperature in the laboratory</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity refType="math_minimum">
+                            <dcc:name>
+                                <dcc:content>Ambient temperature min</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{ambient_temperature_min_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                        <dcc:quantity refType="math_maximum">
+                            <dcc:name>
+                                <dcc:content>Ambient temperature max</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{ambient_temperature_max_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition>
+                    <dcc:name>
+                        <dcc:content>Reference junction temperature</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity>
+                            <dcc:name>
+                                <dcc:content>Reference junction temperature</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{reference_junction_temperature_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition>
+                    <dcc:name>
+                        <dcc:content>Withdrawal of the thermocouple for the inhomogeneity test</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity>
+                            <dcc:name>
+                                <dcc:content>Withdrawal distance</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{inhomogeneity_withdrawal_m}}</si:value>
+                                <si:unit>\metre</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+            </dcc:influenceConditions>
+            <dcc:results>
+                <dcc:result>
+                    <dcc:name>
+                        <dcc:content>Measurement result</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:list>
+                            <dcc:quantity refType="basic_referenceValue">
+                                <dcc:name>
+                                    <dcc:content>Temperature t90</dcc:content>
+                                </dcc:name>
+                                <si:realListXMLList>
+                                    <si:valueXMLList>{{reference_values_degc}}</si:valueXMLList>
+                                    <si:unitXMLList>\degreecelsius</si:unitXMLList>
+                                </si:realListXMLList>
+                            </dcc:quantity>
+                            <dcc:quantity refType="basic_measuredValue">
+                                <dcc:name>
+                                    <dcc:content>Thermoelectric voltage E</dcc:content>
+                                </dcc:name>
+                                <si:realListXMLList>
+                                    <si:valueXMLList>{{thermoelectric_voltages_uv}}</si:valueXMLList>
+                                    <si:unitXMLList>\micro\volt</si:unitXMLList>
+                                </si:realListXMLList>
+                            </dcc:quantity>
+                            <dcc:quantity refType="measurementError">
+                                <dcc:name>
+                                    <dcc:content>Deviation from EN 60584 (E - Eref)</dcc:content>
+                                </dcc:name>
+                                <si:realListXMLList>
+                                    <si:valueXMLList>{{deviation_values_uv}}</si:valueXMLList>
+                                    <si:unitXMLList>\micro\volt</si:unitXMLList>
+                                </si:realListXMLList>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>Inhomogeneity E</dcc:content>
+                                </dcc:name>
+                                <si:realListXMLList>
+                                    <si:valueXMLList>{{inhomogeneity_values_uv}}</si:valueXMLList>
+                                    <si:unitXMLList>\micro\volt</si:unitXMLList>
+                                </si:realListXMLList>
+                            </dcc:quantity>
+                            <dcc:quantity refType="basic_uncertainty">
+                                <dcc:name>
+                                    <dcc:content>Expanded uncertainty U (expressed in temperature)</dcc:content>
+                                </dcc:name>
+                                <si:realListXMLList>
+                                    <si:valueXMLList>{{measured_uncertainties_degc}}</si:valueXMLList>
+                                    <si:unitXMLList>\degreecelsius</si:unitXMLList>
+                                    <si:expandedUncXMLList>
+                                        <si:uncertaintyXMLList>{{measured_uncertainties_degc}}</si:uncertaintyXMLList>
+                                        <si:coverageFactorXMLList>{{coverage_factor}}</si:coverageFactorXMLList>
+                                        <si:coverageProbabilityXMLList>{{coverage_probability}}</si:coverageProbabilityXMLList>
+                                    </si:expandedUncXMLList>
+                                </si:realListXMLList>
+                            </dcc:quantity>
+                        </dcc:list>
+                    </dcc:data>
+                </dcc:result>
+                <dcc:result>
+                    <dcc:name>
+                        <dcc:content>Deviation function (E - Eref) = a t^2 + b t, t in degrees Celsius, least squares fit of all measured points</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:list>
+                            <dcc:quantity id="deviation_a">
+                                <dcc:name>
+                                    <dcc:content>Coefficient a</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:label>a</si:label>
+                                    <si:value>{{deviation_coefficient_a_uv_per_degc2}}</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-2}</si:unit>
+                                    <si:expandedUnc>
+                                        <si:uncertainty>{{deviation_coefficient_a_uncertainty_uv_per_degc2}}</si:uncertainty>
+                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                    </si:expandedUnc>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity id="deviation_b">
+                                <dcc:name>
+                                    <dcc:content>Coefficient b</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:label>b</si:label>
+                                    <si:value>{{deviation_coefficient_b_uv_per_degc}}</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-1}</si:unit>
+                                    <si:expandedUnc>
+                                        <si:uncertainty>{{deviation_coefficient_b_uncertainty_uv_per_degc}}</si:uncertainty>
+                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                    </si:expandedUnc>
+                                </si:real>
+                            </dcc:quantity>
+                        </dcc:list>
+                    </dcc:data>
+                </dcc:result>
+                <dcc:result>
+                    <dcc:name>
+                        <dcc:content>Reference function of thermocouple type S according to EN 60584-1: Eref = sum a_i t90^i, range -50 to 1064.18 degrees Celsius</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:list>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a0 (-50 to 1064.18 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>0.00000000000E+00</si:value>
+                                    <si:unit>\micro\volt</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a1 (-50 to 1064.18 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>5.40313308631E+00</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-1}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a2 (-50 to 1064.18 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>1.25934289740E-02</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-2}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a3 (-50 to 1064.18 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>-2.32477968689E-05</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-3}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a4 (-50 to 1064.18 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>3.22028823036E-08</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-4}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a5 (-50 to 1064.18 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>-3.31465196389E-11</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-5}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a6 (-50 to 1064.18 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>2.55744251786E-14</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-6}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a7 (-50 to 1064.18 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>-1.25068871393E-17</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-7}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a8 (-50 to 1064.18 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>2.71443176145E-21</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-8}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                        </dcc:list>
+                    </dcc:data>
+                </dcc:result>
+                <dcc:result>
+                    <dcc:name>
+                        <dcc:content>Reference function of thermocouple type S according to EN 60584-1: Eref = sum a_i t90^i, range 1064.18 to 1664.5 degrees Celsius</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:list>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a0 (1064.18 to 1664.5 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>1.32900444085E+03</si:value>
+                                    <si:unit>\micro\volt</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a1 (1064.18 to 1664.5 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>3.34509311344E+00</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-1}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a2 (1064.18 to 1664.5 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>6.54805192818E-03</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-2}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a3 (1064.18 to 1664.5 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>-1.64856259209E-06</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-3}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content>a4 (1064.18 to 1664.5 degrees Celsius)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>1.29989605174E-11</si:value>
+                                    <si:unit>\micro\volt\degreecelsius\tothe{-4}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                        </dcc:list>
+                    </dcc:data>
+                </dcc:result>
+            </dcc:results>
+        </dcc:measurementResult>
+    </dcc:measurementResults>
+</dcc:digitalCalibrationCertificate>

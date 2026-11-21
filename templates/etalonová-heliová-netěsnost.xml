@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si"
+    xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.2.1/dcc.xsd" schemaVersion="3.2.1">
+    <dcc:administrativeData>
+        <dcc:dccSoftware>
+            <dcc:software>
+                <dcc:name>
+                    <dcc:content>Excel</dcc:content>
+                </dcc:name>
+                <dcc:release>v8.2</dcc:release>
+            </dcc:software>
+            <dcc:software>
+                <dcc:name>
+                    <dcc:content>Sablona etalonova heliova netesnost</dcc:content>
+                </dcc:name>
+                <dcc:release>v1.0</dcc:release>
+            </dcc:software>
+        </dcc:dccSoftware>
+        <dcc:calibrationLaboratory>
+            <dcc:calibrationLaboratoryCode>{{calibration_lab_code}}</dcc:calibrationLaboratoryCode>
+            <dcc:contact>
+                <dcc:name>
+                    <dcc:content>{{laboratory_name}}</dcc:content>
+                </dcc:name>
+                <dcc:eMail>{{laboratory_email}}</dcc:eMail>
+                <dcc:location>
+                    <dcc:city>{{laboratory_city}}</dcc:city>
+                    <dcc:countryCode>CZ</dcc:countryCode>
+                </dcc:location>
+            </dcc:contact>
+        </dcc:calibrationLaboratory>
+        <dcc:coreData>
+            <dcc:countryCodeISO3166_1>CZ</dcc:countryCodeISO3166_1>
+            <dcc:usedLangCodeISO639_1>cs</dcc:usedLangCodeISO639_1>
+            <dcc:mandatoryLangCodeISO639_1>cs</dcc:mandatoryLangCodeISO639_1>
+            <dcc:uniqueIdentifier>{{lab_unique_identifier}}</dcc:uniqueIdentifier>
+            <dcc:identifications>
+                <dcc:identification>
+                    <dcc:issuer>calibrationLaboratory</dcc:issuer>
+                    <dcc:value>{{lab_identifier}}</dcc:value>
+                </dcc:identification>
+            </dcc:identifications>
+            <dcc:beginPerformanceDate>{{calibration_start_date}}</dcc:beginPerformanceDate>
+            <dcc:endPerformanceDate>{{calibration_end_date}}</dcc:endPerformanceDate>
+            <dcc:performanceLocation>{{calibration_location}}</dcc:performanceLocation>
+            <dcc:issueDate>{{issue_date}}</dcc:issueDate>
+        </dcc:coreData>
+        <dcc:customer>
+            <dcc:name>
+                <dcc:content>{{customer_name}}</dcc:content>
+            </dcc:name>
+            <dcc:location>
+                <dcc:countryCode>{{customer_country_code}}</dcc:countryCode>
+                <dcc:city>{{customer_city}}</dcc:city>
+            </dcc:location>
+        </dcc:customer>
+        <dcc:items>
+            <dcc:item>
+                <dcc:name>
+                    <dcc:content>{{instrument_name}}</dcc:content>
+                </dcc:name>
+                <dcc:manufacturer>
+                    <dcc:name>
+                        <dcc:content>{{manufacturer_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:manufacturer>
+                <dcc:model>{{model}}</dcc:model>
+                <dcc:identifications>
+                    <dcc:identification refType="serialNumber">
+                        <dcc:issuer>manufacturer</dcc:issuer>
+                        <dcc:value>{{serial_number}}</dcc:value>
+                        <dcc:name>
+                            <dcc:content>SN</dcc:content>
+                        </dcc:name>
+                    </dcc:identification>
+                    <dcc:identification refType="inventoryNumber">
+                        <dcc:issuer>customer</dcc:issuer>
+                        <dcc:value>{{inventory_number}}</dcc:value>
+                        <dcc:name>
+                            <dcc:content>Inventory number</dcc:content>
+                        </dcc:name>
+                    </dcc:identification>
+                </dcc:identifications>
+            </dcc:item>
+        </dcc:items>
+        <dcc:respPersons>
+            <dcc:respPerson>
+                <dcc:person>
+                    <dcc:name>
+                        <dcc:content>{{responsible_person_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:person>
+                <dcc:role>Calibrated by</dcc:role>
+            </dcc:respPerson>
+            <dcc:respPerson>
+                <dcc:person>
+                    <dcc:name>
+                        <dcc:content>{{approver_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:person>
+                <dcc:role>Approved by</dcc:role>
+            </dcc:respPerson>
+        </dcc:respPersons>
+        <dcc:statements>
+            <dcc:statement>
+                <dcc:declaration>
+                    <dcc:content>{{results_declaration}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content>Place of calibration</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content>{{calibration_location_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content>Traceability</dcc:content>
+                </dcc:name>
+                <dcc:traceable>true</dcc:traceable>
+                <dcc:declaration>
+                    <dcc:content>{{traceability}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content>Measurement uncertainty</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content>{{uncertainty_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+        </dcc:statements>
+    </dcc:administrativeData>
+    <dcc:measurementResults>
+        <dcc:measurementResult>
+            <dcc:name>
+                <dcc:content>Measurement results</dcc:content>
+            </dcc:name>
+            <dcc:usedMethods>
+                <dcc:usedMethod>
+                    <dcc:name>
+                        <dcc:content>{{method_text}}</dcc:content>
+                    </dcc:name>
+                    <dcc:reference>{{method_code}}</dcc:reference>
+                </dcc:usedMethod>
+            </dcc:usedMethods>
+            <dcc:measuringEquipments>
+                <dcc:measuringEquipment>
+                    <dcc:name>
+                        <dcc:content>{{etalon_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:measuringEquipment>
+            </dcc:measuringEquipments>
+            <dcc:influenceConditions>
+                <dcc:influenceCondition refType="basic_temperature">
+                    <dcc:name>
+                        <dcc:content>Air temperature</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity refType="math_minimum">
+                            <dcc:name>
+                                <dcc:content>Air temperature min</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{ambient_temperature_min_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                        <dcc:quantity refType="math_maximum">
+                            <dcc:name>
+                                <dcc:content>Air temperature max</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{ambient_temperature_max_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition refType="basic_humidityRelative">
+                    <dcc:name>
+                        <dcc:content>Relative humidity</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity refType="math_minimum">
+                            <dcc:name>
+                                <dcc:content>Relative humidity min</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{humidity_min_pct}}</si:value>
+                                <si:unit>\percent</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                        <dcc:quantity refType="math_maximum">
+                            <dcc:name>
+                                <dcc:content>Relative humidity max</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{humidity_max_pct}}</si:value>
+                                <si:unit>\percent</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition refType="basic_pressure">
+                    <dcc:name>
+                        <dcc:content>Barometric pressure</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity refType="math_minimum">
+                            <dcc:name>
+                                <dcc:content>Barometric pressure min</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{pressure_min_hpa}}</si:value>
+                                <si:unit>\hecto\pascal</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                        <dcc:quantity refType="math_maximum">
+                            <dcc:name>
+                                <dcc:content>Barometric pressure max</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{pressure_max_hpa}}</si:value>
+                                <si:unit>\hecto\pascal</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition>
+                    <dcc:name>
+                        <dcc:content>Mean temperature of the leak during the calibration</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity>
+                            <dcc:name>
+                                <dcc:content>Mean temperature of the leak</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{leak_mean_temperature_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition>
+                    <dcc:name>
+                        <dcc:content>Medium used</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:text>
+                            <dcc:content>{{medium_text}}</dcc:content>
+                        </dcc:text>
+                    </dcc:data>
+                </dcc:influenceCondition>
+            </dcc:influenceConditions>
+            <dcc:results>
+                <dcc:result>
+                    <dcc:name>
+                        <dcc:content>Gas flow from the calibrated leak at the standard temperature</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity>
+                            <dcc:name>
+                                <dcc:content>Standard temperature</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{standard_temperature_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                        <dcc:quantity refType="basic_measuredValue">
+                            <dcc:name>
+                                <dcc:content>Gas flow (leak rate)</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{leak_rate_mbar_dm3_per_s}}</si:value>
+                                <si:unit>\milli\bar\deci\metre\tothe{3}\second\tothe{-1}</si:unit>
+                                <si:expandedUnc>
+                                    <si:uncertainty>{{leak_rate_uncertainty_mbar_dm3_per_s}}</si:uncertainty>
+                                    <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                    <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                </si:expandedUnc>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:result>
+            </dcc:results>
+        </dcc:measurementResult>
+    </dcc:measurementResults>
+</dcc:digitalCalibrationCertificate>
