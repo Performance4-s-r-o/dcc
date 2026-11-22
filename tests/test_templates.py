@@ -43,7 +43,7 @@ def test_template_validates_with_example_data(template: Path):
     assert not missing, f"chybí příkladová data pro: {sorted(missing)}"
     for block, names in repeat_placeholders(text).items():
         rows = values.get("_repeat", {}).get(block)
-        assert rows, f"chybí řádky opakovaného bloku '{block}' (klíč _repeat)"
+        assert rows is not None, f"chybí řádky opakovaného bloku '{block}' (klíč _repeat; prázdný seznam je povolen)"
         for i, row in enumerate(rows, 1):
             assert not names - row.keys(), f"blok '{block}', řádek {i}: chybí {sorted(names - row.keys())}"
 
@@ -148,3 +148,11 @@ def test_legacy_list_has_no_fixed_templates():
         errors = validate_text(render(text, values))
         assert any(e.startswith("refType bez předpony") or "bez atributu lang" in e for e in errors), \
             f"{name} už pravidla splňuje – odeber ho z LEGACY_RULES"
+
+
+def test_conformity_list_length_must_match_points():
+    """Počet stavů shody musí sedět s počtem bodů v listu (multimetr: status_values vs. reference_values)."""
+    template = TEMPLATES_DIR / "digitální-multimetr.xml"
+    values = values_for(template)
+    values["_repeat"]["range_block"][0]["status_values"] = "pass"          # 1 stav, ale 4 body
+    assert any("conformityXMLList" in e for e in validate_text(render(read(template), values)))

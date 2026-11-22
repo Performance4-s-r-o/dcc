@@ -1,0 +1,100 @@
+{
+  "calibration_lab_code": "K 2202",
+  "laboratory_name": "Kalibrační laboratoř ČMI, Oblastní inspektorát Praha",
+  "laboratory_email": "jiri.zikan@cmi.gov.cz",
+  "laboratory_city": "Praha",
+  "lab_unique_identifier": "1011-KL-20035-26",
+  "lab_identifier": "1011-KL-20035-26",
+  "calibration_start_date": "2026-02-12",
+  "calibration_end_date": "2026-02-12",
+  "issue_date": "2026-02-12",
+  "customer_name": "Český metrologický institut, Oblastní inspektorát Praha, oddělení 1011, Radiová 1136/3, 102 00 Praha 10 - Hostivař",
+  "customer_city": "Praha",
+  "instrument_name": "Digitální multimetr",
+  "manufacturer_name": "Fluke",
+  "model": "8846A",
+  "serial_number": "2534018",
+  "responsible_person_name": "Pracovník",
+  "approver_name": "Schvalující",
+  "calibration_location_text": "Český metrologický institut, Oblastní inspektorát Praha, Radiová 1136/3, 102 00 Praha 10",
+  "traceability": "Použité etalony/zařízení jsou navázány na (mezi)národní etalony.",
+  "uncertainty_text": "Standardní nejistota měření byla určena v souladu s dokumentem EA-4/02 M:2022. Rozšířená nejistota odpovídá k = 2, pokrytí přibližně 95 %.",
+  "calibration_conditions_text": "Přístroj nebyl dostaven.",
+  "specification_statement_text": "Vyhodnocení je uvedeno v přílohách č. 1 a č. 2. Při vyhodnocení, zda přístroj vyhovuje specifikaci, nebyly brány v úvahu nejistoty kalibrace.",
+  "status_legend_text": "swt – významně v toleranci (do 20 % tolerance); pass – pásmo v mezích; bord – pásmo od 70 % do 100 % tolerance; FAIL – překročená tolerance.",
+  "method_text": "Kalibrace číslicových multimetrů",
+  "method_code": "611-MP-C098",
+  "ambient_temperature_min_degc": "21.8",
+  "ambient_temperature_max_degc": "24.2",
+  "humidity_min_pct": "15",
+  "humidity_max_pct": "45",
+  "_repeat": {
+    "etalon": [
+      {
+        "etalon_name": "Datron 4808",
+        "etalon_serial_number": "32876",
+        "etalon_certificate_number": "1011-KL-10016-25"
+      },
+      {
+        "etalon_name": "Etalon 1G P4030",
+        "etalon_serial_number": "0005",
+        "etalon_certificate_number": "1011-KL-90023-26"
+      },
+      {
+        "etalon_name": "Záznamník teploty a vlhkosti Comet U3120",
+        "etalon_serial_number": "22271476",
+        "etalon_certificate_number": "1033-KL-70240-24"
+      }
+    ],
+    "range_block": [
+      {
+        "function_name": "DC VOLTAGE",
+        "range_name": "100 mV Range",
+        "range_si_unit": "\\milli\\volt",
+        "reference_values": "0 5 10 20",
+        "measured_values": "-0.00050 5.00071 9.99940 19.99862",
+        "uncertainties": "0.00039 0.0023 0.0013 0.0016",
+        "coverage_factor": "2 2 2 2",
+        "coverage_probability": "0.95 0.95 0.95 0.95",
+        "lower_limits": "-0.0035 4.99632 9.99613 19.99576",
+        "upper_limits": "0.0035 5.00368 10.00387 20.00424",
+        "absolute_errors": "-0.0005 0.000713 -0.000598 -0.001378",
+        "tolerance_usage_pct": "14.3 19.4 15.5 32.5",
+        "status_values": "pass pass pass pass"
+      },
+      {
+        "function_name": "2-WIRE OHMS",
+        "range_name": "1 MOhm Range",
+        "range_si_unit": "\\mega\\ohm",
+        "reference_values": "0.000000435 1.0000617",
+        "measured_values": "0.00000003 0.999946",
+        "uncertainties": "0.000000044 0.000023",
+        "coverage_factor": "2 2",
+        "coverage_probability": "0.95 0.95",
+        "lower_limits": "-0.00000957 0.999952",
+        "upper_limits": "0.00001044 1.000172",
+        "absolute_errors": "-0.000000405 -0.0001159",
+        "tolerance_usage_pct": "4.05 105",
+        "status_values": "pass fail"
+      }
+    ],
+    "ac_range_block": [
+      {
+        "function_name": "AC VOLTAGE",
+        "range_name": "100 mV Range",
+        "range_si_unit": "\\milli\\volt",
+        "frequency_values_hz": "10 55 1000",
+        "reference_values": "100 50 100",
+        "measured_values": "99.964 49.985 99.977",
+        "uncertainties": "0.022 0.013 0.018",
+        "coverage_factor": "2 2 2",
+        "coverage_probability": "0.95 0.95 0.95",
+        "lower_limits": "99.61 49.93 99.9",
+        "upper_limits": "100.39 50.07 100.1",
+        "absolute_errors": "-0.036 -0.0146 -0.0228",
+        "tolerance_usage_pct": "9.23 20.9 22.8",
+        "status_values": "pass pass conditionalPass"
+      }
+    ]
+  }
+}

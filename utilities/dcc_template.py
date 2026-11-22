@@ -67,7 +67,7 @@ def expand(text: str, values: dict) -> str:
 
     def one(m):
         name = m.group(1)
-        if not rows.get(name):
+        if name not in rows:        # prázdný seznam [] je povolen (blok se vynechá), chybějící klíč je chyba
             raise KeyError(f"chybí řádky pro opakovaný blok '{name}' (values['_repeat']['{name}'])")
         return "".join(fill(m.group(2), {**r, "block_no": i}) for i, r in enumerate(rows[name], 1))
 
@@ -164,6 +164,11 @@ def practice_errors(doc: etree._ElementTree) -> list[str]:
                 counts[q.findtext("dcc:name/dcc:content", namespaces=NS)] = len((v.text or "").split())
         if len(set(counts.values())) > 1:
             errors.append(f"řádek {container.sourceline}: různý počet bodů v listu: {counts}")
+        # seznam stavů shody (basic_conformity) musí mít stejný počet položek jako ostatní seznamy v listu
+        for conf in container.iterfind("dcc:measurementMetaData/dcc:metaData/dcc:conformityXMLList", NS):
+            n = len((conf.text or "").split())
+            if counts and n not in set(counts.values()):
+                errors.append(f"řádek {conf.sourceline}: conformityXMLList má {n} položek, ostatní seznamy {sorted(set(counts.values()))}")
 
     # refType musí mít jmennou předponu slovníku PTB (basic_, length_, math_, gp_ …); bez ní je termín v TemaTres neplatný
     bare = sorted({t for e in root.iter() for t in (e.get("refType") or "").split() if not re.match(r"^[A-Za-z0-9]+_\w+$", t)})
