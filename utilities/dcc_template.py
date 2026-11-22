@@ -26,8 +26,52 @@ PLACEHOLDER = re.compile(r"\{\{\s*([A-Za-z0-9_]+)\s*\}\}")
 DSI_UNIT = re.compile(r"^(\\[a-zA-Z]+(\\tothe\{-?\d+(\.\d+)?\})?)+$")
 
 
+# Opakovaný blok (např. jedna koncová měrka): fragment mezi značkami se rozbalí pro každý řádek dat.
+# {{block_no}} doplní rozbalení samo (pořadí řádku od 1), ostatní placeholdery bloku bere z řádku.
+REPEAT = re.compile(r"<!--\s*REPEAT\s+(\w+)\s*-->(.*?)<!--\s*/REPEAT\s+\1\s*-->", re.S)
+IMPLICIT = {"block_no"}
+
+
+# Šablony vzniklé před zavedením pravidel (refType s předponou, lang u dcc:content). Nové šablony sem NESMÍ přibýt –
+# seznam se jen zkracuje (po opravě šablony odebrat řádek; hlídá to test_legacy_list_has_no_fixed_templates).
+LEGACY_RULES = {
+    "manometr-EN837-1-tlakomer.xml", "váha-neuautomatická-pm-5-bodů.xml", "váha-neuautomatická-pm-11-bodů.xml",
+    "odporový-snímač-teploty-pt100.xml", "termoelektrický-snímač-teploty-typ-S.xml", "etalonová-heliová-netěsnost.xml",
+}
+_LEGACY_ERROR = re.compile(r"^(refType bez předpony|\d+× dcc:content bez atributu lang)")
+
+
+def drop_legacy_errors(errors: list[str], template_name: str) -> list[str]:
+    """U legacy šablon vynechá chyby z pravidel, která v době vzniku šablony neexistovala."""
+    if template_name not in LEGACY_RULES:
+        return errors
+    return [e for e in errors if not _LEGACY_ERROR.match(e)]
+
+
 def placeholders(text: str) -> set[str]:
-    return set(PLACEHOLDER.findall(text))
+    """Placeholdery mimo opakované bloky (ty vrací repeat_placeholders)."""
+    return set(PLACEHOLDER.findall(REPEAT.sub("", text)))
+
+
+def repeat_placeholders(text: str) -> dict[str, set[str]]:
+    """Název bloku -> placeholdery, které musí mít každý jeho řádek."""
+    out: dict[str, set[str]] = {}
+    for m in REPEAT.finditer(text):
+        out.setdefault(m.group(1), set()).update(PLACEHOLDER.findall(m.group(2)))
+    return {k: v - IMPLICIT for k, v in out.items()}
+
+
+def expand(text: str, values: dict) -> str:
+    """Rozbalí opakované bloky podle values['_repeat'][název] = [řádek, ...]."""
+    rows = values.get("_repeat", {})
+
+    def one(m):
+        name = m.group(1)
+        if not rows.get(name):
+            raise KeyError(f"chybí řádky pro opakovaný blok '{name}' (values['_repeat']['{name}'])")
+        return "".join(fill(m.group(2), {**r, "block_no": i}) for i, r in enumerate(rows[name], 1))
+
+    return REPEAT.sub(one, text)
 
 
 def load_values(common: Path, *specific: Path) -> dict[str, str]:
@@ -38,9 +82,14 @@ def load_values(common: Path, *specific: Path) -> dict[str, str]:
     return values
 
 
-def fill(text: str, values: dict[str, str]) -> str:
+def fill(text: str, values: dict) -> str:
     """Dosadí hodnoty (XML-escapované). Neznámý placeholder vyhodí KeyError."""
     return PLACEHOLDER.sub(lambda m: escape(str(values[m.group(1)])), text)
+
+
+def render(text: str, values: dict) -> str:
+    """Rozbalí opakované bloky a dosadí všechny hodnoty."""
+    return fill(expand(text, values), values)
 
 
 def _cache_dir() -> Path:
@@ -115,6 +164,23 @@ def practice_errors(doc: etree._ElementTree) -> list[str]:
                 counts[q.findtext("dcc:name/dcc:content", namespaces=NS)] = len((v.text or "").split())
         if len(set(counts.values())) > 1:
             errors.append(f"řádek {container.sourceline}: různý počet bodů v listu: {counts}")
+
+    # refType musí mít jmennou předponu slovníku PTB (basic_, length_, math_, gp_ …); bez ní je termín v TemaTres neplatný
+    bare = sorted({t for e in root.iter() for t in (e.get("refType") or "").split() if not re.match(r"^[A-Za-z0-9]+_\w+$", t)})
+    if bare:
+        errors.append(f"refType bez předpony slovníku: {bare} (např. basic_serialNumber – ověř v TemaTres)")
+
+    # dcc:content musí mít lang (jazyk textu je povinná informace; mandatoryLang musí být mezi použitými)
+    no_lang = [e for e in root.iter(f"{{{NS['dcc']}}}content") if not e.get("{http://www.w3.org/XML/1998/namespace}lang") and not e.get("lang")]
+    if no_lang:
+        errors.append(f"{len(no_lang)}× dcc:content bez atributu lang (první na řádku {no_lang[0].sourceline})")
+
+    # každý refId musí odkazovat na existující id (XSD/libxml2 neexistující odkaz IDREFS nehlídá)
+    ids = {e.get("id") for e in root.iter() if e.get("id")}
+    for e in root.iter():
+        for ref in (e.get("refId") or "").split():
+            if ref not in ids:
+                errors.append(f"řádek {e.sourceline}: refId='{ref}' neodkazuje na žádné id (existují: {sorted(ids)[:6]}…)")
 
     # neprázdné povinné texty
     for tag in ("calibrationLaboratoryCode", "uniqueIdentifier", "issueDate"):

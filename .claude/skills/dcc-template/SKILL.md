@@ -109,3 +109,43 @@ Výsledek ověřuj z **uloženého souboru**, ne z živého Excelu (ten může u
    žádná hodnota). Návratový kód musí být 0.
 9. **Úklid**: zavřít jen sešity/instance, které jsem otevřel já (nikdy „zavřít všechny“), bez zbytků `~$…` a dočasných souborů v repu.
 10. **Nahlásit**: co je ověřeno, co ne (např. makro s dialogy, nepushnutá šablona) a co zůstává ručně doplnit („DOPLNIT“).
+
+## Opakované bloky (REPEAT) – když GP chce prvek na každý objekt (např. koncová měrka)
+Když GP vyžaduje samostatný prvek na každý kus (sada koncových měrek: `dcc:item` + `dcc:subItems`, výsledky po měrce přes
+`refId`), počet kusů se mezi certifikáty mění, takže jej nejde vyjádřit seznamem placeholderů. Šablona proto obsahuje
+**opakovaný blok**:
+```xml
+<!-- REPEAT gauge_block -->
+<dcc:item id="Item_{{block_no}}" refType="length_gaugeBlock"> … {{nominal_length_mm}} … </dcc:item>
+<!-- /REPEAT gauge_block -->
+```
+- stejný název bloku může být v šabloně víckrát (položky v `administrativeData` i výsledky v `measurementResults`) – rozbalí se
+  stejnými řádky; `{{block_no}}` doplní rozbalení samo (1, 2, …), ostatní placeholdery bloku bere z řádku,
+- příklad: `"_repeat": {"gauge_block": [ {řádek}, {řádek}, … ]}` v `tests/examples/<šablona>.json`; test hlídá, že každý
+  řádek má všechny placeholdery bloku a žádný navíc,
+- rozbalení dělá `utilities/dcc_template.py` (`render`/`expand`); **list Logic v Excelu ho zatím neumí** – pro takovou šablonu
+  je potřeba druhá tabulka (řádek = měrka) a rozbalení fragmentu vzorcem; do té doby ji Excel naplnit nedokáže,
+- ID a odkazy musí být jednoznačné a existující: duplicitní `id` zachytí XSD, **neexistující `refId` zachytí až naše pravidlo
+  v `practice_errors()`** (libxml2 odkazy IDREFS nekontroluje),
+- schéma: `subItems` a metadata podle GP vyžadují **3.3.0** (`schemaVersion="3.3.0"`, SI 2.2.1 – nejistota
+  `si:measurementUncertaintyUnivariate/si:expandedMU`, ne `si:expandedUnc` z 3.2.1); stáhne se samo.
+- popisky (`dcc:content lang="cs"`) musí být v jazyce, který `lang` uvádí – pevné popisky v nových šablonách jsou česky.
+
+## Co hlídá kód (a co zůstává na tobě)
+Každé opakované selhání dostalo kontrolu v kódu, ne jen zápis v textu. Tohle už **vynucují testy** (`uv run pytest`):
+- jednotky D-SI (ne `%`, `°C`), stejný počet bodů v seznamech, `schemaVersion` = `schemaLocation`, `mandatoryLang` v `usedLang`,
+- každý `refId` odkazuje na existující `id` (XSD to nehlídá), žádné duplicitní `id`,
+- **každý `refType` má předponu slovníku** (`basic_…`, `length_…`, `gp_…`) a **každé `dcc:content` má `lang`**,
+- soubor bez `{{placeholderů}}` není šablona (vyplněná instance neprojde), dvě shodné šablony neprojdou (výjimky `KNOWN_DUPLICATES`),
+- kontrola, že validace není prázdná (rozbitá data musí selhat), a že každý příklad má všechny placeholdery i opakované bloky.
+
+`LEGACY_RULES` (v `utilities/dcc_template.py`) = šablony starší než pravidla refType/lang; ty jsou z těchto dvou pravidel
+vyňaty, **nová šablona tam nesmí přibýt**. Po opravě šablony řádek odeber (test `test_legacy_list_has_no_fixed_templates`
+selže, dokud tam zůstane opravená šablona).
+
+Excel: `utilities/verify_excel_dcc.py` navíc hlídá roztažený vzorec v tabulce Logic (4 a více proměnných se stejným vzorcem),
+nezměněné původní listy, makra a `calcPr`.
+
+**Nelze automatizovat – kontroluj sám:** že popisek je opravdu v jazyce z `lang` (anglický text s `lang="cs"` projde),
+význam refTypů a existence termínu v TemaTres mimo větev `basic` (`basic_resolution`, `basic_rangeLower/Upper` jsou neověřené),
+věcnou správnost fyziky a příkladových čísel, a to, že GP příklad pro daný obor existuje.

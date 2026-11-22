@@ -1,0 +1,69 @@
+{
+  "calibration_lab_code": "K 2301",
+  "laboratory_name": "Kalibrační laboratoř č. 2301, Ivančice",
+  "laboratory_email": "lab@example.com",
+  "laboratory_city": "Ivančice",
+  "lab_unique_identifier": "KL-2026-0456",
+  "lab_identifier": "KL-2026-0456",
+  "calibration_start_date": "2026-03-10",
+  "calibration_end_date": "2026-03-10",
+  "issue_date": "2026-03-11",
+  "customer_name": "Zákazník a.s., Ulice 1, 664 91 Ivančice",
+  "customer_city": "Ivančice",
+  "instrument_name": "Koncové měrky V. řád",
+  "manufacturer_name": "Výrobce",
+  "model": "Typ",
+  "serial_number": "12345",
+  "inventory_number": "E-001",
+  "order_number": "2026/123",
+  "gauge_material_text": "steel",
+  "accuracy_class_set": "1",
+  "responsible_person_name": "Pracovník",
+  "approver_name": "Marek Vacula",
+  "calibration_location_text": "V laboratoři - pracoviště Ivančice",
+  "traceability": "Tento kalibrační list potvrzuje návaznost použitých etalonů na národní etalony, které realizují jednotky SI.",
+  "uncertainty_text": "Nejistota měření: U = (0,5 + 5L) µm, L je měřená délka v metrech. Standardní nejistota byla určena v souladu s EA-4/02 M:2022, k = 2, pokrytí přibližně 95 %.",
+  "method_text": "Měření bylo provedeno podle kalibračního postupu",
+  "method_code": "KP D1",
+  "measuring_device_name": "Přístroj na kontrolu koncových měrek č. ME D12",
+  "reference_gauge_block_set_name": "Sada koncových měrek 4. řádu (0,5 až 100) mm č. ET D4/10",
+  "ambient_temperature_min_degc": "19",
+  "ambient_temperature_max_degc": "21",
+  "_repeat": {
+    "gauge_block": [
+      {
+        "nominal_length_mm": "1",
+        "marking_text": "1",
+        "length_deviation_um": "0.05",
+        "length_uncertainty_um": "0.51",
+        "coverage_factor": "2",
+        "coverage_probability": "0.95",
+        "length_variation_um": "0.05",
+        "accuracy_class_achieved": "1",
+        "conformity_value": "pass"
+      },
+      {
+        "nominal_length_mm": "10",
+        "marking_text": "10",
+        "length_deviation_um": "0.20",
+        "length_uncertainty_um": "0.55",
+        "coverage_factor": "2",
+        "coverage_probability": "0.95",
+        "length_variation_um": "0.06",
+        "accuracy_class_achieved": "1",
+        "conformity_value": "pass"
+      },
+      {
+        "nominal_length_mm": "100",
+        "marking_text": "100",
+        "length_deviation_um": "0.45",
+        "length_uncertainty_um": "1.00",
+        "coverage_factor": "2",
+        "coverage_probability": "0.95",
+        "length_variation_um": "0.10",
+        "accuracy_class_achieved": "2",
+        "conformity_value": "fail"
+      }
+    ]
+  }
+}

@@ -71,7 +71,7 @@
                 </dcc:manufacturer>
                 <dcc:model>{{model}}</dcc:model>
                 <dcc:identifications>
-                    <dcc:identification refType="serialNumber">
+                    <dcc:identification refType="basic_serialNumber">
                         <dcc:issuer>manufacturer</dcc:issuer>
                         <dcc:value>{{serial_number}}</dcc:value>
                         <dcc:name>

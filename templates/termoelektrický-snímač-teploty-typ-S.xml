@@ -70,7 +70,7 @@
                 </dcc:manufacturer>
                 <dcc:model>{{model}}</dcc:model>
                 <dcc:identifications>
-                    <dcc:identification refType="serialNumber">
+                    <dcc:identification refType="basic_serialNumber">
                         <dcc:issuer>manufacturer</dcc:issuer>
                         <dcc:value>{{serial_number}}</dcc:value>
                         <dcc:name>
@@ -170,14 +170,14 @@
                         <dcc:content>{{etalon_name}}</dcc:content>
                     </dcc:name>
                     <dcc:identifications>
-                        <dcc:identification refType="serialNumber">
+                        <dcc:identification refType="basic_serialNumber">
                             <dcc:issuer>manufacturer</dcc:issuer>
                             <dcc:value>{{etalon_serial_number}}</dcc:value>
                             <dcc:name>
                                 <dcc:content>SN</dcc:content>
                             </dcc:name>
                         </dcc:identification>
-                        <dcc:identification refType="calibrationCertificate">
+                        <dcc:identification refType="basic_certificateNumber">
                             <dcc:issuer>other</dcc:issuer>
                             <dcc:value>{{etalon_certificate_number}}</dcc:value>
                             <dcc:name>
@@ -271,7 +271,7 @@
                                     <si:unitXMLList>\micro\volt</si:unitXMLList>
                                 </si:realListXMLList>
                             </dcc:quantity>
-                            <dcc:quantity refType="measurementError">
+                            <dcc:quantity refType="basic_measurementError">
                                 <dcc:name>
                                     <dcc:content>Deviation from EN 60584 (E - Eref)</dcc:content>
                                 </dcc:name>

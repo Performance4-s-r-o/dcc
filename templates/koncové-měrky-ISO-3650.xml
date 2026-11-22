@@ -1,0 +1,324 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si" xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.3.0/dcc.xsd" schemaVersion="3.3.0">
+    <dcc:administrativeData>
+        <dcc:dccSoftware>
+            <dcc:software>
+                <dcc:name>
+                    <dcc:content lang="cs">Excel</dcc:content>
+                </dcc:name>
+                <dcc:release>v8.2</dcc:release>
+            </dcc:software>
+            <dcc:software>
+                <dcc:name>
+                    <dcc:content lang="cs">Sablona koncove merky EN ISO 3650</dcc:content>
+                </dcc:name>
+                <dcc:release>v1.0</dcc:release>
+            </dcc:software>
+        </dcc:dccSoftware>
+        <dcc:calibrationLaboratory>
+            <dcc:calibrationLaboratoryCode>{{calibration_lab_code}}</dcc:calibrationLaboratoryCode>
+            <dcc:contact>
+                <dcc:name>
+                    <dcc:content lang="cs">{{laboratory_name}}</dcc:content>
+                </dcc:name>
+                <dcc:eMail>{{laboratory_email}}</dcc:eMail>
+                <dcc:location>
+                    <dcc:city>{{laboratory_city}}</dcc:city>
+                    <dcc:countryCode>CZ</dcc:countryCode>
+                </dcc:location>
+            </dcc:contact>
+        </dcc:calibrationLaboratory>
+        <dcc:coreData>
+            <dcc:countryCodeISO3166_1>CZ</dcc:countryCodeISO3166_1>
+            <dcc:usedLangCodeISO639_1>cs</dcc:usedLangCodeISO639_1>
+            <dcc:mandatoryLangCodeISO639_1>cs</dcc:mandatoryLangCodeISO639_1>
+            <dcc:uniqueIdentifier>{{lab_unique_identifier}}</dcc:uniqueIdentifier>
+            <dcc:identifications>
+                <dcc:identification>
+                    <dcc:issuer>calibrationLaboratory</dcc:issuer>
+                    <dcc:value>{{lab_identifier}}</dcc:value>
+                </dcc:identification>
+            </dcc:identifications>
+            <dcc:beginPerformanceDate>{{calibration_start_date}}</dcc:beginPerformanceDate>
+            <dcc:endPerformanceDate>{{calibration_end_date}}</dcc:endPerformanceDate>
+            <dcc:performanceLocation>{{calibration_location}}</dcc:performanceLocation>
+            <dcc:issueDate>{{issue_date}}</dcc:issueDate>
+        </dcc:coreData>
+        <dcc:customer>
+            <dcc:name>
+                <dcc:content lang="cs">{{customer_name}}</dcc:content>
+            </dcc:name>
+            <dcc:location>
+                <dcc:countryCode>{{customer_country_code}}</dcc:countryCode>
+                <dcc:city>{{customer_city}}</dcc:city>
+            </dcc:location>
+        </dcc:customer>
+        <dcc:items>
+            <dcc:item id="setOfItems" refType="length_gaugeBlockSet">
+                <dcc:name>
+                    <dcc:content lang="cs">{{instrument_name}}</dcc:content>
+                </dcc:name>
+                <dcc:manufacturer>
+                    <dcc:name>
+                        <dcc:content lang="cs">{{manufacturer_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:manufacturer>
+                <dcc:model>{{model}}</dcc:model>
+                <dcc:identifications>
+                    <dcc:identification refType="basic_serialNumber">
+                        <dcc:issuer>manufacturer</dcc:issuer>
+                        <dcc:value>{{serial_number}}</dcc:value>
+                        <dcc:name>
+                            <dcc:content lang="cs">Výr. č.</dcc:content>
+                        </dcc:name>
+                    </dcc:identification>
+                    <dcc:identification refType="basic_identificationNumber">
+                        <dcc:issuer>customer</dcc:issuer>
+                        <dcc:value>{{inventory_number}}</dcc:value>
+                        <dcc:name>
+                            <dcc:content lang="cs">Evidenční číslo</dcc:content>
+                        </dcc:name>
+                    </dcc:identification>
+                    <dcc:identification refType="basic_orderNumber">
+                        <dcc:issuer>customer</dcc:issuer>
+                        <dcc:value>{{order_number}}</dcc:value>
+                        <dcc:name>
+                            <dcc:content lang="cs">Číslo zakázky</dcc:content>
+                        </dcc:name>
+                    </dcc:identification>
+                </dcc:identifications>
+                <dcc:itemQuantities>
+                    <dcc:itemQuantity refType="length_material">
+                        <dcc:name>
+                            <dcc:content lang="cs">Materiál</dcc:content>
+                        </dcc:name>
+                        <dcc:noQuantity>
+                            <dcc:content lang="cs">{{gauge_material_text}}</dcc:content>
+                        </dcc:noQuantity>
+                    </dcc:itemQuantity>
+                    <dcc:itemQuantity refType="length_accuracyClass">
+                        <dcc:name>
+                            <dcc:content lang="cs">Třída přesnosti</dcc:content>
+                        </dcc:name>
+                        <dcc:charsXMLList>{{accuracy_class_set}}</dcc:charsXMLList>
+                    </dcc:itemQuantity>
+                </dcc:itemQuantities>
+                <dcc:subItems>
+                    <!-- REPEAT gauge_block -->
+                    <dcc:item id="Item_{{block_no}}" refType="length_gaugeBlock">
+                        <dcc:name>
+                            <dcc:content lang="cs">Koncová měrka {{nominal_length_mm}} mm</dcc:content>
+                        </dcc:name>
+                        <dcc:identifications>
+                            <dcc:identification refType="basic_marking">
+                                <dcc:issuer>manufacturer</dcc:issuer>
+                                <dcc:value>{{marking_text}}</dcc:value>
+                                <dcc:name>
+                                    <dcc:content lang="cs">Rytina (označení měrky)</dcc:content>
+                                </dcc:name>
+                            </dcc:identification>
+                        </dcc:identifications>
+                        <dcc:itemQuantities>
+                            <dcc:itemQuantity refType="length_nominalLength">
+                                <dcc:name>
+                                    <dcc:content lang="cs">Jmenovitá délka</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>{{nominal_length_mm}}</si:value>
+                                    <si:unit>\milli\metre</si:unit>
+                                </si:real>
+                            </dcc:itemQuantity>
+                        </dcc:itemQuantities>
+                    </dcc:item>
+                    <!-- /REPEAT gauge_block -->
+                </dcc:subItems>
+            </dcc:item>
+        </dcc:items>
+        <dcc:respPersons>
+            <dcc:respPerson>
+                <dcc:person>
+                    <dcc:name>
+                        <dcc:content lang="cs">{{responsible_person_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:person>
+                <dcc:role>Calibrated by</dcc:role>
+            </dcc:respPerson>
+            <dcc:respPerson>
+                <dcc:person>
+                    <dcc:name>
+                        <dcc:content lang="cs">{{approver_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:person>
+                <dcc:role>Approved by</dcc:role>
+            </dcc:respPerson>
+        </dcc:respPersons>
+        <dcc:statements>
+            <dcc:statement>
+                <dcc:declaration>
+                    <dcc:content lang="cs">{{results_declaration}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content lang="cs">Místo kalibrace</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content lang="cs">{{calibration_location_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement id="toSI" refType="basic_metrologicallyTraceableToSI">
+                <dcc:name>
+                    <dcc:content lang="cs">Metrologická návaznost</dcc:content>
+                </dcc:name>
+                <dcc:traceable>true</dcc:traceable>
+                <dcc:declaration>
+                    <dcc:content lang="cs">{{traceability}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content lang="cs">Nejistota měření</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content lang="cs">{{uncertainty_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content lang="cs">Hodnocení</dcc:content>
+                </dcc:name>
+                <dcc:norm>EN ISO 3650</dcc:norm>
+                <dcc:declaration>
+                    <dcc:content lang="cs">Výrok o třídě přesnosti dle normy ČSN EN ISO 3650, tabulka 5, vystavený na žádost zákazníka je uveden se sdíleným rizikem zákazník / laboratoř bez započítání rozšířené nejistoty.</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+        </dcc:statements>
+    </dcc:administrativeData>
+    <dcc:measurementResults>
+        <dcc:measurementResult refType="length_dimensionalResults">
+            <dcc:name>
+                <dcc:content lang="cs">Výsledky měření</dcc:content>
+            </dcc:name>
+            <dcc:usedMethods>
+                <dcc:usedMethod refType="basic_calibrationMethod">
+                    <dcc:name>
+                        <dcc:content lang="cs">{{method_text}}</dcc:content>
+                    </dcc:name>
+                    <dcc:norm>EN ISO 3650</dcc:norm>
+                    <dcc:reference>{{method_code}}</dcc:reference>
+                </dcc:usedMethod>
+            </dcc:usedMethods>
+            <dcc:measuringEquipments>
+                <dcc:measuringEquipment refType="length_measuringDeviceLength">
+                    <dcc:name>
+                        <dcc:content lang="cs">{{measuring_device_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:measuringEquipment>
+                <dcc:measuringEquipment refType="length_referenceMeasurementStandard">
+                    <dcc:name>
+                        <dcc:content lang="cs">{{reference_gauge_block_set_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:measuringEquipment>
+            </dcc:measuringEquipments>
+            <dcc:influenceConditions>
+                <dcc:influenceCondition refType="basic_temperature">
+                    <dcc:name>
+                        <dcc:content lang="cs">Teplota při kalibraci</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity refType="math_minimum">
+                            <dcc:name>
+                                <dcc:content lang="cs">Teplota při kalibraci min</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{ambient_temperature_min_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                        <dcc:quantity refType="math_maximum">
+                            <dcc:name>
+                                <dcc:content lang="cs">Teplota při kalibraci max</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{ambient_temperature_max_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+            </dcc:influenceConditions>
+            <dcc:results>
+                <!-- REPEAT gauge_block -->
+                <dcc:result refId="Item_{{block_no}}">
+                    <dcc:name>
+                        <dcc:content lang="cs">Výsledek kalibrace koncové měrky {{nominal_length_mm}} mm</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:list>
+                            <dcc:quantity refType="length_deviationFromNominalLength">
+                                <dcc:name>
+                                    <dcc:content lang="cs">Odchylka střední délky od jmenovité délky</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>{{length_deviation_um}}</si:value>
+                                    <si:unit>\micro\metre</si:unit>
+                                    <si:measurementUncertaintyUnivariate>
+                                        <si:expandedMU>
+                                            <si:valueExpandedMU>{{length_uncertainty_um}}</si:valueExpandedMU>
+                                            <si:coverageFactor>{{coverage_factor}}</si:coverageFactor>
+                                            <si:coverageProbability>{{coverage_probability}}</si:coverageProbability>
+                                        </si:expandedMU>
+                                    </si:measurementUncertaintyUnivariate>
+                                </si:real>
+                                <dcc:measurementMetaData>
+                                    <dcc:metaData refType="basic_conformity">
+                                        <dcc:norm>EN ISO 3650</dcc:norm>
+                                        <dcc:reference>Table 5</dcc:reference>
+                                        <dcc:declaration>
+                                            <dcc:content lang="cs">Třída přesnosti podle ČSN EN ISO 3650 (sdílené riziko, bez započtení rozšířené nejistoty)</dcc:content>
+                                        </dcc:declaration>
+                                        <dcc:conformity>{{conformity_value}}</dcc:conformity>
+                                    </dcc:metaData>
+                                </dcc:measurementMetaData>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content lang="cs">Rozpětí délky</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>{{length_variation_um}}</si:value>
+                                    <si:unit>\micro\metre</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity refType="length_accuracyClass">
+                                <dcc:name>
+                                    <dcc:content lang="cs">Dosažená třída přesnosti (ČSN EN ISO 3650)</dcc:content>
+                                </dcc:name>
+                                <dcc:charsXMLList>{{accuracy_class_achieved}}</dcc:charsXMLList>
+                            </dcc:quantity>
+                        </dcc:list>
+                    </dcc:data>
+                </dcc:result>
+                <!-- /REPEAT gauge_block -->
+            </dcc:results>
+            <dcc:measurementMetaData>
+                <dcc:metaData refType="basic_referenceTemperature">
+                    <dcc:data>
+                        <dcc:quantity>
+                            <dcc:name>
+                                <dcc:content lang="cs">Referenční teplota</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>20</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:metaData>
+                <dcc:metaData refId="toSI">
+                    <dcc:valid>true</dcc:valid>
+                </dcc:metaData>
+            </dcc:measurementMetaData>
+        </dcc:measurementResult>
+    </dcc:measurementResults>
+</dcc:digitalCalibrationCertificate>

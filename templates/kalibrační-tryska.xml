@@ -1,0 +1,479 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si" xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.2.1/dcc.xsd" schemaVersion="3.2.1">
+    <dcc:administrativeData>
+        <dcc:dccSoftware>
+            <dcc:software>
+                <dcc:name>
+                    <dcc:content lang="cs">Excel</dcc:content>
+                </dcc:name>
+                <dcc:release>v8.2</dcc:release>
+            </dcc:software>
+            <dcc:software>
+                <dcc:name>
+                    <dcc:content lang="cs">Sablona kalibracni tryska</dcc:content>
+                </dcc:name>
+                <dcc:release>v1.0</dcc:release>
+            </dcc:software>
+        </dcc:dccSoftware>
+        <dcc:calibrationLaboratory>
+            <dcc:calibrationLaboratoryCode>{{calibration_lab_code}}</dcc:calibrationLaboratoryCode>
+            <dcc:contact>
+                <dcc:name>
+                    <dcc:content lang="cs">{{laboratory_name}}</dcc:content>
+                </dcc:name>
+                <dcc:eMail>{{laboratory_email}}</dcc:eMail>
+                <dcc:location>
+                    <dcc:city>{{laboratory_city}}</dcc:city>
+                    <dcc:countryCode>CZ</dcc:countryCode>
+                </dcc:location>
+            </dcc:contact>
+        </dcc:calibrationLaboratory>
+        <dcc:coreData>
+            <dcc:countryCodeISO3166_1>CZ</dcc:countryCodeISO3166_1>
+            <dcc:usedLangCodeISO639_1>cs</dcc:usedLangCodeISO639_1>
+            <dcc:mandatoryLangCodeISO639_1>cs</dcc:mandatoryLangCodeISO639_1>
+            <dcc:uniqueIdentifier>{{lab_unique_identifier}}</dcc:uniqueIdentifier>
+            <dcc:identifications>
+                <dcc:identification>
+                    <dcc:issuer>calibrationLaboratory</dcc:issuer>
+                    <dcc:value>{{lab_identifier}}</dcc:value>
+                </dcc:identification>
+            </dcc:identifications>
+            <dcc:beginPerformanceDate>{{calibration_start_date}}</dcc:beginPerformanceDate>
+            <dcc:endPerformanceDate>{{calibration_end_date}}</dcc:endPerformanceDate>
+            <dcc:performanceLocation>{{calibration_location}}</dcc:performanceLocation>
+            <dcc:issueDate>{{issue_date}}</dcc:issueDate>
+        </dcc:coreData>
+        <dcc:customer>
+            <dcc:name>
+                <dcc:content lang="cs">{{customer_name}}</dcc:content>
+            </dcc:name>
+            <dcc:location>
+                <dcc:countryCode>{{customer_country_code}}</dcc:countryCode>
+                <dcc:city>{{customer_city}}</dcc:city>
+            </dcc:location>
+        </dcc:customer>
+        <dcc:items>
+            <dcc:item>
+                <dcc:name>
+                    <dcc:content lang="cs">{{instrument_name}}</dcc:content>
+                </dcc:name>
+                <dcc:manufacturer>
+                    <dcc:name>
+                        <dcc:content lang="cs">{{manufacturer_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:manufacturer>
+                <dcc:model>{{model}}</dcc:model>
+                <dcc:identifications>
+                    <dcc:identification refType="basic_serialNumber">
+                        <dcc:issuer>manufacturer</dcc:issuer>
+                        <dcc:value>{{serial_number}}</dcc:value>
+                        <dcc:name>
+                            <dcc:content lang="cs">Výr. č.</dcc:content>
+                        </dcc:name>
+                    </dcc:identification>
+                    <dcc:identification refType="basic_identificationNumber">
+                        <dcc:issuer>customer</dcc:issuer>
+                        <dcc:value>{{inventory_number}}</dcc:value>
+                        <dcc:name>
+                            <dcc:content lang="cs">Evidenční číslo</dcc:content>
+                        </dcc:name>
+                    </dcc:identification>
+                </dcc:identifications>
+                <dcc:itemQuantities>
+                    <dcc:itemQuantity>
+                        <dcc:name>
+                            <dcc:content lang="cs">Jmenovitý průtok</dcc:content>
+                        </dcc:name>
+                        <si:real>
+                            <si:value>{{nominal_flow_ml_per_min}}</si:value>
+                            <si:unit>\milli\litre\minute\tothe{-1}</si:unit>
+                        </si:real>
+                    </dcc:itemQuantity>
+                    <dcc:itemQuantity>
+                        <dcc:name>
+                            <dcc:content lang="cs">Vstupní tlak</dcc:content>
+                        </dcc:name>
+                        <dcc:noQuantity>
+                            <dcc:content lang="cs">{{inlet_pressure_text}}</dcc:content>
+                        </dcc:noQuantity>
+                    </dcc:itemQuantity>
+                    <dcc:itemQuantity>
+                        <dcc:name>
+                            <dcc:content lang="cs">Výstupní tlak</dcc:content>
+                        </dcc:name>
+                        <dcc:noQuantity>
+                            <dcc:content lang="cs">{{outlet_pressure_text}}</dcc:content>
+                        </dcc:noQuantity>
+                    </dcc:itemQuantity>
+                    <dcc:itemQuantity>
+                        <dcc:name>
+                            <dcc:content lang="cs">Deklarovaná přesnost (procenta jmenovitého průtoku)</dcc:content>
+                        </dcc:name>
+                        <si:real>
+                            <si:value>{{declared_accuracy_pct}}</si:value>
+                            <si:unit>\percent</si:unit>
+                        </si:real>
+                    </dcc:itemQuantity>
+                </dcc:itemQuantities>
+            </dcc:item>
+        </dcc:items>
+        <dcc:respPersons>
+            <dcc:respPerson>
+                <dcc:person>
+                    <dcc:name>
+                        <dcc:content lang="cs">{{responsible_person_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:person>
+                <dcc:role>Calibrated by</dcc:role>
+            </dcc:respPerson>
+            <dcc:respPerson>
+                <dcc:person>
+                    <dcc:name>
+                        <dcc:content lang="cs">{{approver_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:person>
+                <dcc:role>Approved by</dcc:role>
+            </dcc:respPerson>
+        </dcc:respPersons>
+        <dcc:statements>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content lang="cs">Ujednání o vzájemném uznávání (CIPM MRA)</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content lang="cs">{{mra_statement_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:declaration>
+                    <dcc:content lang="cs">{{results_declaration}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content lang="cs">Místo kalibrace</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content lang="cs">{{calibration_location_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content lang="cs">Metrologická návaznost</dcc:content>
+                </dcc:name>
+                <dcc:traceable>true</dcc:traceable>
+                <dcc:declaration>
+                    <dcc:content lang="cs">{{traceability}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content lang="cs">Nejistota měření</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content lang="cs">{{uncertainty_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content lang="cs">Poznámka k diferenčnímu tlaku</dcc:content>
+                </dcc:name>
+                <dcc:declaration>
+                    <dcc:content lang="cs">{{differential_pressure_note_text}}</dcc:content>
+                </dcc:declaration>
+            </dcc:statement>
+            <dcc:statement>
+                <dcc:name>
+                    <dcc:content lang="cs">Vyjádření o plnění specifikace</dcc:content>
+                </dcc:name>
+                <dcc:norm>ILAC-G8:09/2019</dcc:norm>
+                <dcc:reference>4.2.1</dcc:reference>
+                <dcc:declaration>
+                    <dcc:content lang="cs">{{specification_statement_text}}</dcc:content>
+                </dcc:declaration>
+                <dcc:conformity>{{specification_conformity}}</dcc:conformity>
+            </dcc:statement>
+        </dcc:statements>
+    </dcc:administrativeData>
+    <dcc:measurementResults>
+        <dcc:measurementResult>
+            <dcc:name>
+                <dcc:content lang="cs">Výsledky měření</dcc:content>
+            </dcc:name>
+            <dcc:usedMethods>
+                <dcc:usedMethod>
+                    <dcc:name>
+                        <dcc:content lang="cs">{{method_text}}</dcc:content>
+                    </dcc:name>
+                    <dcc:reference>{{method_code}}</dcc:reference>
+                </dcc:usedMethod>
+            </dcc:usedMethods>
+            <dcc:measuringEquipments>
+                <dcc:measuringEquipment>
+                    <dcc:name>
+                        <dcc:content lang="cs">{{etalon_name}}</dcc:content>
+                    </dcc:name>
+                </dcc:measuringEquipment>
+            </dcc:measuringEquipments>
+            <dcc:influenceConditions>
+                <dcc:influenceCondition refType="basic_temperature">
+                    <dcc:name>
+                        <dcc:content lang="cs">Teplota vzduchu</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity refType="math_minimum">
+                            <dcc:name>
+                                <dcc:content lang="cs">Teplota vzduchu min</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{ambient_temperature_min_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                        <dcc:quantity refType="math_maximum">
+                            <dcc:name>
+                                <dcc:content lang="cs">Teplota vzduchu max</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{ambient_temperature_max_degc}}</si:value>
+                                <si:unit>\degreecelsius</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition refType="basic_humidityRelative">
+                    <dcc:name>
+                        <dcc:content lang="cs">Relativní vlhkost</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity refType="math_minimum">
+                            <dcc:name>
+                                <dcc:content lang="cs">Relativní vlhkost min</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{humidity_min_pct}}</si:value>
+                                <si:unit>\percent</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                        <dcc:quantity refType="math_maximum">
+                            <dcc:name>
+                                <dcc:content lang="cs">Relativní vlhkost max</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{humidity_max_pct}}</si:value>
+                                <si:unit>\percent</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition refType="basic_pressure">
+                    <dcc:name>
+                        <dcc:content lang="cs">Barometrický tlak</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:quantity>
+                            <dcc:name>
+                                <dcc:content lang="cs">Barometrický tlak</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{barometric_pressure_kpa}}</si:value>
+                                <si:unit>\kilo\pascal</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                        <dcc:quantity>
+                            <dcc:name>
+                                <dcc:content lang="cs">Nejistota barometrického tlaku</dcc:content>
+                            </dcc:name>
+                            <si:real>
+                                <si:value>{{barometric_pressure_uncertainty_kpa}}</si:value>
+                                <si:unit>\kilo\pascal</si:unit>
+                            </si:real>
+                        </dcc:quantity>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition>
+                    <dcc:name>
+                        <dcc:content lang="cs">Použitý vstupní tlak</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:text>
+                            <dcc:content lang="cs">{{applied_inlet_pressure_text}}</dcc:content>
+                        </dcc:text>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition>
+                    <dcc:name>
+                        <dcc:content lang="cs">Použitý výstupní tlak</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:text>
+                            <dcc:content lang="cs">{{applied_outlet_pressure_text}}</dcc:content>
+                        </dcc:text>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition>
+                    <dcc:name>
+                        <dcc:content lang="cs">Kalibrační plyn</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:text>
+                            <dcc:content lang="cs">{{calibration_gas_text}}</dcc:content>
+                        </dcc:text>
+                    </dcc:data>
+                </dcc:influenceCondition>
+                <dcc:influenceCondition>
+                    <dcc:name>
+                        <dcc:content lang="cs">Směr průtoku</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:text>
+                            <dcc:content lang="cs">{{flow_direction_text}}</dcc:content>
+                        </dcc:text>
+                    </dcc:data>
+                </dcc:influenceCondition>
+            </dcc:influenceConditions>
+            <dcc:results>
+                <dcc:result>
+                    <dcc:name>
+                        <dcc:content lang="cs">Závislost průtoku Q na diferenčním tlaku p: Q = a·p + b (Q v ml/min, p v kPa)</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:list>
+                            <dcc:quantity id="flow_a">
+                                <dcc:name>
+                                    <dcc:content lang="cs">Koeficient a</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:label>a</si:label>
+                                    <si:value>{{coefficient_a_ml_per_min_per_kpa}}</si:value>
+                                    <si:unit>\milli\litre\minute\tothe{-1}\kilo\pascal\tothe{-1}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity id="flow_b">
+                                <dcc:name>
+                                    <dcc:content lang="cs">Koeficient b</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:label>b</si:label>
+                                    <si:value>{{coefficient_b_ml_per_min}}</si:value>
+                                    <si:unit>\milli\litre\minute\tothe{-1}</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content lang="cs">Rozsah platnosti: diferenční tlak</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>{{differential_pressure_kpa}}</si:value>
+                                    <si:unit>\kilo\pascal</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content lang="cs">Rozsah platnosti: tolerance diferenčního tlaku</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>{{differential_pressure_tolerance_kpa}}</si:value>
+                                    <si:unit>\kilo\pascal</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content lang="cs">Rozšířená relativní nejistota průtoku vypočteného vztahem</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>{{flow_relative_uncertainty_pct}}</si:value>
+                                    <si:unit>\percent</si:unit>
+                                    <si:expandedUnc>
+                                        <si:uncertainty>{{flow_relative_uncertainty_pct}}</si:uncertainty>
+                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                    </si:expandedUnc>
+                                </si:real>
+                            </dcc:quantity>
+                        </dcc:list>
+                    </dcc:data>
+                </dcc:result>
+                <dcc:result>
+                    <dcc:name>
+                        <dcc:content lang="cs">Naměřený průtok při diferenčním tlaku</dcc:content>
+                    </dcc:name>
+                    <dcc:data>
+                        <dcc:list>
+                            <dcc:quantity refType="basic_referenceValue">
+                                <dcc:name>
+                                    <dcc:content lang="cs">Diferenční tlak</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>{{applied_differential_pressure_kpa}}</si:value>
+                                    <si:unit>\kilo\pascal</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity refType="basic_measuredValue">
+                                <dcc:name>
+                                    <dcc:content lang="cs">Objemový průtok</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>{{flow_value_ml_per_min}}</si:value>
+                                    <si:unit>\milli\litre\minute\tothe{-1}</si:unit>
+                                    <si:expandedUnc>
+                                        <si:uncertainty>{{flow_uncertainty_ml_per_min}}</si:uncertainty>
+                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                    </si:expandedUnc>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content lang="cs">Standardní teplota</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>{{standard_temperature_degc}}</si:value>
+                                    <si:unit>\degreecelsius</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content lang="cs">Standardní průtok (standardní podmínky, 101,325 kPa abs.)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>{{flow_standard_value_ml_per_min}}</si:value>
+                                    <si:unit>\milli\litre\minute\tothe{-1}</si:unit>
+                                    <si:expandedUnc>
+                                        <si:uncertainty>{{flow_standard_uncertainty_ml_per_min}}</si:uncertainty>
+                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                    </si:expandedUnc>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content lang="cs">Normální teplota</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>{{normal_temperature_degc}}</si:value>
+                                    <si:unit>\degreecelsius</si:unit>
+                                </si:real>
+                            </dcc:quantity>
+                            <dcc:quantity>
+                                <dcc:name>
+                                    <dcc:content lang="cs">Normální průtok (normální podmínky, 101,325 kPa abs.)</dcc:content>
+                                </dcc:name>
+                                <si:real>
+                                    <si:value>{{flow_normal_value_ml_per_min}}</si:value>
+                                    <si:unit>\milli\litre\minute\tothe{-1}</si:unit>
+                                    <si:expandedUnc>
+                                        <si:uncertainty>{{flow_normal_uncertainty_ml_per_min}}</si:uncertainty>
+                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                    </si:expandedUnc>
+                                </si:real>
+                            </dcc:quantity>
+                        </dcc:list>
+                    </dcc:data>
+                </dcc:result>
+            </dcc:results>
+        </dcc:measurementResult>
+    </dcc:measurementResults>
+</dcc:digitalCalibrationCertificate>

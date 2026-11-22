@@ -21,7 +21,7 @@ from pathlib import Path
 import openpyxl
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from utilities.dcc_template import PLACEHOLDER, validate_text  # noqa: E402
+from utilities.dcc_template import PLACEHOLDER, drop_legacy_errors, validate_text  # noqa: E402
 
 warnings.simplefilter("ignore")
 problems: list[str] = []
@@ -67,6 +67,16 @@ def main() -> int:
     for name, (val, xmlv) in rows.items():
         if val is None or str(val).strip() == "" or str(val).startswith("#") or xmlv is None or str(xmlv).startswith("#"):
             fail(f"{name}: hodnota je prázdná nebo chybová ({val!r})")
+    # roztažený vzorec: Excel při psaní do tabulky přes COM může zkopírovat vzorec jednoho řádku do celého sloupce
+    wbf = openpyxl.load_workbook(wb_path, keep_vba=True)
+    wsf = wbf["Logic"]
+    forms: dict[str, list[str]] = {}
+    for r2 in range(8, 8 + len(rows)):
+        f = wsf.cell(r2, 4).value
+        forms.setdefault(str(f), []).append(str(wsf.cell(r2, 3).value))
+    for f, names in forms.items():
+        if len(names) >= 4:
+            fail(f"{len(names)} proměnných má shodný vzorec ({f[:60]}…) – pravděpodobně roztažený vzorec: {names[:4]}")
     todo = [n for n, (v, _) in rows.items() if str(v).strip().upper() == "DOPLNIT"]
     if todo:
         print("  !", f"ruční hodnota „DOPLNIT“ u: {todo}")
@@ -80,7 +90,7 @@ def main() -> int:
     left = PLACEHOLDER.findall(xml)
     if left:
         fail(f"po vyplnění zůstaly placeholdery: {sorted(set(left))}")
-    errs = validate_text(xml)
+    errs = drop_legacy_errors(validate_text(xml), tpl_path.name)
     if errs:
         for e in errs[:8]:
             fail("validace: " + e[:200])
