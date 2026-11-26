@@ -10,9 +10,10 @@ certifikáty liší, je `{{placeholder}}`; vše, co určuje typ měřidla/metody
 Šablonu vyplňuje Excel (makro) – proto jen prosté textové dosazení, žádná logika v XML.
 
 ## Zdroje pravdy
-- XSD: stahuje se automaticky z ptb.de podle `schemaVersion` šablony (včetně SI a xmldsig) do uživatelské cache (`%LOCALAPPDATA%\dcc-schemas`, jinde `~/.cache/dcc-schemas`, přepsat jde `DCC_SCHEMA_CACHE`). Čerstvé stažení = smazat cache. Verze šablon: **3.2.1**
-  (nejnovější je 3.3.0, GP příklady PTB jsou na 3.3.0; 3.0.0 je zastaralá). Jiná verze =
-  změň `schemaVersion` + `schemaLocation` v šabloně, nic dalšího netřeba.
+- XSD: stahuje se automaticky z ptb.de podle `schemaVersion` šablony (včetně SI a xmldsig) do uživatelské cache (`%LOCALAPPDATA%\dcc-schemas`, jinde `~/.cache/dcc-schemas`, přepsat jde `DCC_SCHEMA_CACHE`). Čerstvé stažení = smazat cache. Verze šablon: **3.3.0** (D-SI 2.2.1)
+  – jediná povolená verze je v `SUPPORTED_SCHEMA_VERSIONS` (`utilities/dcc_template.py`). 3.2.1 odmítá GEMIMEG v2
+  („Falsche SchemaVersion 3.2.1“), 3.0.0 je zastaralá, 3.4.0-rc.* je jen kandidát. Při přechodu na novou verzi změň
+  `schemaVersion` + `schemaLocation`, nahraď zastaralé prvky D-SI (pravidlo `DEPRECATED_SI`) a zvyš `release` šablony.
 - Good Practice: https://wiki.dcc.ptb.de/en/gp_home – hotové referenční DCC (teplota:
   gitlab.com/ptb/dcc/dcc-goodpractice/temperature, délka DKD-E 4-3, váhy DKD-E 7-3, vlhkost).
   **Před novým typem měřidla se vždy podívej, jestli GP příklad existuje, a převezmi jeho refTypy a strukturu.**
@@ -38,12 +39,12 @@ certifikáty liší, je `{{placeholder}}`; vše, co určuje typ měřidla/metody
    | Postup, norma | `measurementResults/usedMethods` |
    | Použité etalony | `measuringEquipments` |
    | Podmínky prostředí/kalibrace (teplota, tlak, vlhkost, proud, ponor…) | `influenceConditions` (refType `basic_temperature`…, jinak `gp_*`) |
-   | Tabulka výsledků, nejistota | `results/result/data/list/quantity` + `expandedUncXMLList` |
+   | Tabulka výsledků, nejistota | `results/result/data/list/quantity` + `measurementUncertaintyUnivariateXMLList/expandedMUXMLList` |
    | Koeficienty, interpolační rovnice | `result refType="temperature_callendarVanDusenCoefficientsSimple"` apod. |
    | Podpis, razítko | `ds:Signature` (xmldsig, přidává se až při podpisu – v šabloně ne) |
 4. **Konvence repa:**
    - placeholder `{{snake_case_anglicky}}`, jednou za význam; stejné jméno = stejná hodnota v celé šabloně,
-   - seznamy: `si:valueXMLList` / `si:unitXMLList` / `si:uncertaintyXMLList`, vždy **stejný počet bodů** v jednom `dcc:list`; počet bodů šablonu nemění (5 i 11 bodů = stejná šablona),
+   - seznamy: `si:valueXMLList` / `si:unitXMLList` / `si:valueExpandedMUXMLList`, vždy **stejný počet bodů** v jednom `dcc:list`; počet bodů šablonu nemění (5 i 11 bodů = stejná šablona),
    - jednotky **D-SI** (`\percent`, `\degreecelsius`, `\hecto\pascal`, `\mega\pascal`, `\ohm`, `\metre`), nikdy `%`, `°C`, `mm`,
    - jednotka měřené veličiny = `{{measurement_si_unit}}` (jedna šablona pro bar/MPa/kPa),
    - `dcc:content` s `lang=` pro každý jazyk z `usedLangCodeISO639_1` (`mandatoryLang` musí být mezi nimi),
@@ -66,7 +67,7 @@ certifikáty liší, je `{{placeholder}}`; vše, co určuje typ měřidla/metody
 ## Pokrytí KL → DCC: příklad Pt100 (ČMI 1033-KL-20089-26)
 Pokryto 1:1: laboratoř, č. KL, data, zákazník, měřidlo (výrobce, typ, výr. č., popis), postup `133-MP-C002`, místo,
 teplota prostředí (23 ± 3) °C (`basic_temperature` + tolerance), návaznost, nejistota k=2/95 % (EA-4/02),
-tabulka t90 [°C] / Rm [Ω] / U [°C] (`basic_referenceValue`, `basic_measuredValue`, `expandedUncXMLList` – **pozor:
+tabulka t90 [°C] / Rm [Ω] / U [°C] (`basic_referenceValue`, `basic_measuredValue`, `expandedMUXMLList` – **pozor:
 nejistota je v °C, měřená hodnota v Ω → jiná jednotka než u sloupce Rm**), kalibroval/schválil.
 Pokryto přes GP rozšíření (`gp_*`, převzít z `dcc_gp_temperatur_resistance.xml`): měřicí proud 1 mA / 75 Hz (`gp_current`),
 ponor 250 mm (`gp_immersionDepth`), R0/A/B a rovnice `Rt = R0(1 + A·t + B·t²)` (`temperature_callendarVanDusenCoefficientsSimple`, vzorec jako `dcc:formula/dcc:latex`).
@@ -127,12 +128,13 @@ Když GP vyžaduje samostatný prvek na každý kus (sada koncových měrek: `dc
   je potřeba druhá tabulka (řádek = měrka) a rozbalení fragmentu vzorcem; do té doby ji Excel naplnit nedokáže,
 - ID a odkazy musí být jednoznačné a existující: duplicitní `id` zachytí XSD, **neexistující `refId` zachytí až naše pravidlo
   v `practice_errors()`** (libxml2 odkazy IDREFS nekontroluje),
-- schéma: `subItems` a metadata podle GP vyžadují **3.3.0** (`schemaVersion="3.3.0"`, SI 2.2.1 – nejistota
-  `si:measurementUncertaintyUnivariate/si:expandedMU`, ne `si:expandedUnc` z 3.2.1); stáhne se samo.
+- schéma: `subItems` a metadata podle GP vyžadují **3.3.0** (SI 2.2.1 – nejistota
+  `si:measurementUncertaintyUnivariate/si:expandedMU`, ne zastaralé `si:expandedUnc`); stáhne se samo.
 - popisky (`dcc:content lang="cs"`) musí být v jazyce, který `lang` uvádí – pevné popisky v nových šablonách jsou česky.
 
 ## Co hlídá kód (a co zůstává na tobě)
 Každé opakované selhání dostalo kontrolu v kódu, ne jen zápis v textu. Tohle už **vynucují testy** (`uv run pytest`):
+- podporovaná verze schématu (`SUPPORTED_SCHEMA_VERSIONS`) a žádné zastaralé prvky D-SI (`si:expandedUnc`, `si:uncertaintyXMLList`…),
 - jednotky D-SI (ne `%`, `°C`), stejný počet bodů v seznamech, `schemaVersion` = `schemaLocation`, `mandatoryLang` v `usedLang`,
 - každý `refId` odkazuje na existující `id` (XSD to nehlídá), žádné duplicitní `id`,
 - **každý `refType` má předponu slovníku** (`basic_…`, `length_…`, `gp_…`) a **každé `dcc:content` má `lang`**,

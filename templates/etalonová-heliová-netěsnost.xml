@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si"
-    xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.2.1/dcc.xsd" schemaVersion="3.2.1">
+    xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.3.0/dcc.xsd" schemaVersion="3.3.0">
     <dcc:administrativeData>
         <dcc:dccSoftware>
             <dcc:software>
@@ -14,7 +14,7 @@
                 <dcc:name>
                     <dcc:content>Sablona etalonova heliova netesnost</dcc:content>
                 </dcc:name>
-                <dcc:release>v1.0</dcc:release>
+                <dcc:release>v1.1</dcc:release>
             </dcc:software>
         </dcc:dccSoftware>
         <dcc:calibrationLaboratory>
@@ -280,11 +280,13 @@
                             <si:real>
                                 <si:value>{{leak_rate_mbar_dm3_per_s}}</si:value>
                                 <si:unit>\milli\bar\deci\metre\tothe{3}\second\tothe{-1}</si:unit>
-                                <si:expandedUnc>
-                                    <si:uncertainty>{{leak_rate_uncertainty_mbar_dm3_per_s}}</si:uncertainty>
-                                    <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
-                                    <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
-                                </si:expandedUnc>
+                                <si:measurementUncertaintyUnivariate>
+                                    <si:expandedMU>
+                                        <si:valueExpandedMU>{{leak_rate_uncertainty_mbar_dm3_per_s}}</si:valueExpandedMU>
+                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                    </si:expandedMU>
+                                </si:measurementUncertaintyUnivariate>
                             </si:real>
                         </dcc:quantity>
                     </dcc:data>

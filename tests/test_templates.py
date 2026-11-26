@@ -156,3 +156,32 @@ def test_conformity_list_length_must_match_points():
     values = values_for(template)
     values["_repeat"]["range_block"][0]["status_values"] = "pass"          # 1 stav, ale 4 body
     assert any("conformityXMLList" in e for e in validate_text(render(read(template), values)))
+
+
+PT100 = TEMPLATES_DIR / "odporový-snímač-teploty-pt100.xml"
+
+
+def test_all_templates_use_supported_schema_version():
+    """GEMIMEG v2 odmítá 3.2.1 („Falsche SchemaVersion 3.2.1“) – všechny šablony musí být v podporované verzi."""
+    import re
+
+    from utilities.dcc_template import SUPPORTED_SCHEMA_VERSIONS
+
+    for template in TEMPLATES:
+        version = re.search(r'schemaVersion="([^"]+)"', read(template)).group(1)
+        assert version in SUPPORTED_SCHEMA_VERSIONS, f"{template.name}: schemaVersion {version}"
+
+
+def test_old_schema_version_is_rejected():
+    """DCC ve verzi 3.2.1 (i když je podle svého XSD platný) neprojde pravidly praxe."""
+    xml = render(read(PT100), values_for(PT100)).replace("v3.3.0", "v3.2.1").replace('"3.3.0"', '"3.2.1"')
+    assert any("není podporovaná verze" in e for e in validate_text(xml))
+
+
+def test_deprecated_uncertainty_is_rejected():
+    """si:expandedUncXMLList je v D-SI 2.2.1 deprecated – XSD 3.3.0 ho přijme, pravidla praxe ne."""
+    xml = render(read(PT100), values_for(PT100))
+    old = (xml.replace("<si:measurementUncertaintyUnivariateXMLList>", "").replace("</si:measurementUncertaintyUnivariateXMLList>", "")
+           .replace("expandedMUXMLList>", "expandedUncXMLList>").replace("valueExpandedMUXMLList>", "uncertaintyXMLList>"))
+    errors = validate_text(old)
+    assert any("zastaralý prvek si:expandedUncXMLList" in e for e in errors), errors

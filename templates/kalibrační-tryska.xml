@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si" xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.2.1/dcc.xsd" schemaVersion="3.2.1">
+<dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si" xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.3.0/dcc.xsd" schemaVersion="3.3.0">
     <dcc:administrativeData>
         <dcc:dccSoftware>
             <dcc:software>
@@ -12,7 +12,7 @@
                 <dcc:name>
                     <dcc:content lang="cs">Sablona kalibracni tryska</dcc:content>
                 </dcc:name>
-                <dcc:release>v1.0</dcc:release>
+                <dcc:release>v1.1</dcc:release>
             </dcc:software>
         </dcc:dccSoftware>
         <dcc:calibrationLaboratory>
@@ -385,11 +385,13 @@
                                 <si:real>
                                     <si:value>{{flow_relative_uncertainty_pct}}</si:value>
                                     <si:unit>\percent</si:unit>
-                                    <si:expandedUnc>
-                                        <si:uncertainty>{{flow_relative_uncertainty_pct}}</si:uncertainty>
-                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
-                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
-                                    </si:expandedUnc>
+                                    <si:measurementUncertaintyUnivariate>
+                                        <si:expandedMU>
+                                            <si:valueExpandedMU>{{flow_relative_uncertainty_pct}}</si:valueExpandedMU>
+                                            <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                            <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                        </si:expandedMU>
+                                    </si:measurementUncertaintyUnivariate>
                                 </si:real>
                             </dcc:quantity>
                         </dcc:list>
@@ -417,11 +419,13 @@
                                 <si:real>
                                     <si:value>{{flow_value_ml_per_min}}</si:value>
                                     <si:unit>\milli\litre\minute\tothe{-1}</si:unit>
-                                    <si:expandedUnc>
-                                        <si:uncertainty>{{flow_uncertainty_ml_per_min}}</si:uncertainty>
-                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
-                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
-                                    </si:expandedUnc>
+                                    <si:measurementUncertaintyUnivariate>
+                                        <si:expandedMU>
+                                            <si:valueExpandedMU>{{flow_uncertainty_ml_per_min}}</si:valueExpandedMU>
+                                            <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                            <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                        </si:expandedMU>
+                                    </si:measurementUncertaintyUnivariate>
                                 </si:real>
                             </dcc:quantity>
                             <dcc:quantity>
@@ -440,11 +444,13 @@
                                 <si:real>
                                     <si:value>{{flow_standard_value_ml_per_min}}</si:value>
                                     <si:unit>\milli\litre\minute\tothe{-1}</si:unit>
-                                    <si:expandedUnc>
-                                        <si:uncertainty>{{flow_standard_uncertainty_ml_per_min}}</si:uncertainty>
-                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
-                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
-                                    </si:expandedUnc>
+                                    <si:measurementUncertaintyUnivariate>
+                                        <si:expandedMU>
+                                            <si:valueExpandedMU>{{flow_standard_uncertainty_ml_per_min}}</si:valueExpandedMU>
+                                            <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                            <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                        </si:expandedMU>
+                                    </si:measurementUncertaintyUnivariate>
                                 </si:real>
                             </dcc:quantity>
                             <dcc:quantity>
@@ -463,11 +469,13 @@
                                 <si:real>
                                     <si:value>{{flow_normal_value_ml_per_min}}</si:value>
                                     <si:unit>\milli\litre\minute\tothe{-1}</si:unit>
-                                    <si:expandedUnc>
-                                        <si:uncertainty>{{flow_normal_uncertainty_ml_per_min}}</si:uncertainty>
-                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
-                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
-                                    </si:expandedUnc>
+                                    <si:measurementUncertaintyUnivariate>
+                                        <si:expandedMU>
+                                            <si:valueExpandedMU>{{flow_normal_uncertainty_ml_per_min}}</si:valueExpandedMU>
+                                            <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                            <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                        </si:expandedMU>
+                                    </si:measurementUncertaintyUnivariate>
                                 </si:real>
                             </dcc:quantity>
                         </dcc:list>
