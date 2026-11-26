@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si"
-    xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.2.1/dcc.xsd" schemaVersion="3.2.1">
+    xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.3.0/dcc.xsd" schemaVersion="3.3.0">
     <dcc:administrativeData>
         <dcc:dccSoftware>
             <dcc:software>
@@ -14,7 +14,7 @@
                 <dcc:name>
                     <dcc:content>Sablona termoelektricky snimac teploty typ S</dcc:content>
                 </dcc:name>
-                <dcc:release>v1.0</dcc:release>
+                <dcc:release>v1.1</dcc:release>
             </dcc:software>
         </dcc:dccSoftware>
         <dcc:calibrationLaboratory>
@@ -296,11 +296,13 @@
                                 <si:realListXMLList>
                                     <si:valueXMLList>{{measured_uncertainties_degc}}</si:valueXMLList>
                                     <si:unitXMLList>\degreecelsius</si:unitXMLList>
-                                    <si:expandedUncXMLList>
-                                        <si:uncertaintyXMLList>{{measured_uncertainties_degc}}</si:uncertaintyXMLList>
-                                        <si:coverageFactorXMLList>{{coverage_factor}}</si:coverageFactorXMLList>
-                                        <si:coverageProbabilityXMLList>{{coverage_probability}}</si:coverageProbabilityXMLList>
-                                    </si:expandedUncXMLList>
+                                    <si:measurementUncertaintyUnivariateXMLList>
+                                        <si:expandedMUXMLList>
+                                            <si:valueExpandedMUXMLList>{{measured_uncertainties_degc}}</si:valueExpandedMUXMLList>
+                                            <si:coverageFactorXMLList>{{coverage_factor}}</si:coverageFactorXMLList>
+                                            <si:coverageProbabilityXMLList>{{coverage_probability}}</si:coverageProbabilityXMLList>
+                                        </si:expandedMUXMLList>
+                                    </si:measurementUncertaintyUnivariateXMLList>
                                 </si:realListXMLList>
                             </dcc:quantity>
                         </dcc:list>
@@ -320,11 +322,13 @@
                                     <si:label>a</si:label>
                                     <si:value>{{deviation_coefficient_a_uv_per_degc2}}</si:value>
                                     <si:unit>\micro\volt\degreecelsius\tothe{-2}</si:unit>
-                                    <si:expandedUnc>
-                                        <si:uncertainty>{{deviation_coefficient_a_uncertainty_uv_per_degc2}}</si:uncertainty>
-                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
-                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
-                                    </si:expandedUnc>
+                                    <si:measurementUncertaintyUnivariate>
+                                        <si:expandedMU>
+                                            <si:valueExpandedMU>{{deviation_coefficient_a_uncertainty_uv_per_degc2}}</si:valueExpandedMU>
+                                            <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                            <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                        </si:expandedMU>
+                                    </si:measurementUncertaintyUnivariate>
                                 </si:real>
                             </dcc:quantity>
                             <dcc:quantity id="deviation_b">
@@ -335,11 +339,13 @@
                                     <si:label>b</si:label>
                                     <si:value>{{deviation_coefficient_b_uv_per_degc}}</si:value>
                                     <si:unit>\micro\volt\degreecelsius\tothe{-1}</si:unit>
-                                    <si:expandedUnc>
-                                        <si:uncertainty>{{deviation_coefficient_b_uncertainty_uv_per_degc}}</si:uncertainty>
-                                        <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
-                                        <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
-                                    </si:expandedUnc>
+                                    <si:measurementUncertaintyUnivariate>
+                                        <si:expandedMU>
+                                            <si:valueExpandedMU>{{deviation_coefficient_b_uncertainty_uv_per_degc}}</si:valueExpandedMU>
+                                            <si:coverageFactor>{{coverage_factor_single}}</si:coverageFactor>
+                                            <si:coverageProbability>{{coverage_probability_single}}</si:coverageProbability>
+                                        </si:expandedMU>
+                                    </si:measurementUncertaintyUnivariate>
                                 </si:real>
                             </dcc:quantity>
                         </dcc:list>

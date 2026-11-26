@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si" xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.2.1/dcc.xsd" schemaVersion="3.2.1">
+<dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si" xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.3.0/dcc.xsd" schemaVersion="3.3.0">
     <dcc:administrativeData>
         <dcc:dccSoftware>
             <dcc:software>
@@ -12,7 +12,7 @@
                 <dcc:name>
                     <dcc:content lang="cs">Sablona digitalni teplomer s termoclankovou sondou</dcc:content>
                 </dcc:name>
-                <dcc:release>v1.0</dcc:release>
+                <dcc:release>v1.1</dcc:release>
             </dcc:software>
         </dcc:dccSoftware>
         <dcc:calibrationLaboratory>
@@ -281,11 +281,13 @@
                                 <si:realListXMLList>
                                     <si:valueXMLList>{{uncertainties_depth_1_degc}}</si:valueXMLList>
                                     <si:unitXMLList>\degreecelsius</si:unitXMLList>
-                                    <si:expandedUncXMLList>
-                                        <si:uncertaintyXMLList>{{uncertainties_depth_1_degc}}</si:uncertaintyXMLList>
-                                        <si:coverageFactorXMLList>{{coverage_factor_depth_1}}</si:coverageFactorXMLList>
-                                        <si:coverageProbabilityXMLList>{{coverage_probability_depth_1}}</si:coverageProbabilityXMLList>
-                                    </si:expandedUncXMLList>
+                                    <si:measurementUncertaintyUnivariateXMLList>
+                                        <si:expandedMUXMLList>
+                                            <si:valueExpandedMUXMLList>{{uncertainties_depth_1_degc}}</si:valueExpandedMUXMLList>
+                                            <si:coverageFactorXMLList>{{coverage_factor_depth_1}}</si:coverageFactorXMLList>
+                                            <si:coverageProbabilityXMLList>{{coverage_probability_depth_1}}</si:coverageProbabilityXMLList>
+                                        </si:expandedMUXMLList>
+                                    </si:measurementUncertaintyUnivariateXMLList>
                                 </si:realListXMLList>
                             </dcc:quantity>
                         </dcc:list>
@@ -322,11 +324,13 @@
                                 <si:realListXMLList>
                                     <si:valueXMLList>{{uncertainties_depth_2_degc}}</si:valueXMLList>
                                     <si:unitXMLList>\degreecelsius</si:unitXMLList>
-                                    <si:expandedUncXMLList>
-                                        <si:uncertaintyXMLList>{{uncertainties_depth_2_degc}}</si:uncertaintyXMLList>
-                                        <si:coverageFactorXMLList>{{coverage_factor_depth_2}}</si:coverageFactorXMLList>
-                                        <si:coverageProbabilityXMLList>{{coverage_probability_depth_2}}</si:coverageProbabilityXMLList>
-                                    </si:expandedUncXMLList>
+                                    <si:measurementUncertaintyUnivariateXMLList>
+                                        <si:expandedMUXMLList>
+                                            <si:valueExpandedMUXMLList>{{uncertainties_depth_2_degc}}</si:valueExpandedMUXMLList>
+                                            <si:coverageFactorXMLList>{{coverage_factor_depth_2}}</si:coverageFactorXMLList>
+                                            <si:coverageProbabilityXMLList>{{coverage_probability_depth_2}}</si:coverageProbabilityXMLList>
+                                        </si:expandedMUXMLList>
+                                    </si:measurementUncertaintyUnivariateXMLList>
                                 </si:realListXMLList>
                             </dcc:quantity>
                         </dcc:list>

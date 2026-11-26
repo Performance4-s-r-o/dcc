@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dcc:digitalCalibrationCertificate xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:dcc="https://ptb.de/dcc" xmlns:si="https://ptb.de/si"
-    xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.2.1/dcc.xsd" schemaVersion="3.2.1">
+    xsi:schemaLocation="https://ptb.de/dcc https://ptb.de/dcc/v3.3.0/dcc.xsd" schemaVersion="3.3.0">
     <dcc:administrativeData>
         <dcc:dccSoftware>
             <dcc:software>
@@ -14,7 +14,7 @@
                 <dcc:name>
                     <dcc:content>Sablona odporovy snimac teploty Pt100</dcc:content>
                 </dcc:name>
-                <dcc:release>v1.0</dcc:release>
+                <dcc:release>v1.1</dcc:release>
             </dcc:software>
         </dcc:dccSoftware>
         <dcc:calibrationLaboratory>
@@ -288,11 +288,13 @@
                                 <si:realListXMLList>
                                     <si:valueXMLList>{{measured_uncertainties_degc}}</si:valueXMLList>
                                     <si:unitXMLList>\degreecelsius</si:unitXMLList>
-                                    <si:expandedUncXMLList>
-                                        <si:uncertaintyXMLList>{{measured_uncertainties_degc}}</si:uncertaintyXMLList>
-                                        <si:coverageFactorXMLList>{{coverage_factor}}</si:coverageFactorXMLList>
-                                        <si:coverageProbabilityXMLList>{{coverage_probability}}</si:coverageProbabilityXMLList>
-                                    </si:expandedUncXMLList>
+                                    <si:measurementUncertaintyUnivariateXMLList>
+                                        <si:expandedMUXMLList>
+                                            <si:valueExpandedMUXMLList>{{measured_uncertainties_degc}}</si:valueExpandedMUXMLList>
+                                            <si:coverageFactorXMLList>{{coverage_factor}}</si:coverageFactorXMLList>
+                                            <si:coverageProbabilityXMLList>{{coverage_probability}}</si:coverageProbabilityXMLList>
+                                        </si:expandedMUXMLList>
+                                    </si:measurementUncertaintyUnivariateXMLList>
                                 </si:realListXMLList>
                             </dcc:quantity>
                         </dcc:list>

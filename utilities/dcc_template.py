@@ -26,6 +26,23 @@ PLACEHOLDER = re.compile(r"\{\{\s*([A-Za-z0-9_]+)\s*\}\}")
 DSI_UNIT = re.compile(r"^(\\[a-zA-Z]+(\\tothe\{-?\d+(\.\d+)?\})?)+$")
 
 
+# Verze schématu DCC, ve kterých se šablony vydávají. 3.2.1 už GEMIMEG v2 odmítá („Falsche SchemaVersion“),
+# 3.4.0-rc.* je jen kandidát. Při přechodu na novou verzi přidat sem a převést šablony (viz SKILL.md).
+SUPPORTED_SCHEMA_VERSIONS = {"3.3.0"}
+
+# Zastaralé prvky D-SI 2.2.x (schéma je zatím přijme, PTB je označuje [deprecated]) -> náhrada.
+DEPRECATED_SI = {
+    "expandedUnc": "si:measurementUncertaintyUnivariate/si:expandedMU",
+    "uncertainty": "si:valueExpandedMU / si:valueStandardMU",
+    "coverageInterval": "si:measurementUncertaintyUnivariate/si:coverageIntervalMU",
+    "standardUnc": "si:valueStandardMU",
+    "expandedUncXMLList": "si:measurementUncertaintyUnivariateXMLList/si:expandedMUXMLList",
+    "uncertaintyXMLList": "si:valueExpandedMUXMLList",
+    "coverageIntervalXMLList": "si:measurementUncertaintyUnivariateXMLList/si:coverageIntervalMUXMLList",
+    "listUnivariateUnc": "si:listMeasurementUncertaintyUnivariate",
+}
+
+
 # Opakovaný blok (např. jedna koncová měrka): fragment mezi značkami se rozbalí pro každý řádek dat.
 # {{block_no}} doplní rozbalení samo (pořadí řádku od 1), ostatní placeholdery bloku bere z řádku.
 REPEAT = re.compile(r"<!--\s*REPEAT\s+(\w+)\s*-->(.*?)<!--\s*/REPEAT\s+\1\s*-->", re.S)
@@ -142,6 +159,16 @@ def practice_errors(doc: etree._ElementTree) -> list[str]:
     loc = root.get(f"{{{NS['xsi']}}}schemaLocation", "")
     if f"/v{root.get('schemaVersion')}/" not in loc:
         errors.append(f"schemaVersion={root.get('schemaVersion')} nesedí s xsi:schemaLocation '{loc}'")
+
+    # verze schématu: šablony se vydávají jen v podporovaných verzích (GEMIMEG v2 odmítá 3.2.1)
+    if root.get("schemaVersion") not in SUPPORTED_SCHEMA_VERSIONS:
+        errors.append(f"schemaVersion={root.get('schemaVersion')} není podporovaná verze {sorted(SUPPORTED_SCHEMA_VERSIONS)}")
+
+    # zastaralé (deprecated) prvky D-SI: XSD 3.3.0 je ještě přijme, GEMIMEG v2 a schéma bez deprecated prvků ne
+    for e in root.iter():
+        if isinstance(e.tag, str) and e.tag.startswith(f"{{{NS['si']}}}") and etree.QName(e).localname in DEPRECATED_SI:
+            errors.append(f"řádek {e.sourceline}: zastaralý prvek si:{etree.QName(e).localname} "
+                          f"(použij {DEPRECATED_SI[etree.QName(e).localname]})")
 
     # jednotky v D-SI
     for unit in root.iter(f"{{{NS['si']}}}unit", f"{{{NS['si']}}}unitXMLList"):
